@@ -14,7 +14,6 @@
       color: #222;
     }
 
-    /* Back arrow */
     .back {
       display: inline-block;
       margin: 20px;
@@ -38,9 +37,18 @@
       background: rgba(255,255,255,0.7); /* make text readable */
       border-radius: 12px;
     }
+
     h1, h2 {
       margin-top: 0;
+      display: flex;
+      align-items: center;
     }
+    h1 img, h2 img {
+      width: 28px;
+      height: 28px;
+      margin-right: 8px;
+    }
+
     p, ul {
       font-size: 1.1rem;
     }
@@ -54,11 +62,13 @@
   </style>
 </head>
 <body>
-  <!-- Back arrow -->
-  <a href="index.html" class="back"> Back</a>
+  <a href="index.html" class="back">Back</a>
 
   <main>
-    <h1>Profile</h1>
+    <h1>
+      <img src="profile-icon.png" alt="Profile Icon">
+      Profile
+    </h1>
     <p>
       I am an aspiring Android Developer with a strong foundation in Java and Kotlin,
       currently learning and expanding my skills at Lerum Vuxenutbildning. My main interest
@@ -69,7 +79,10 @@
       contributing and growing as part of a development team.
     </p>
 
-    <h2>Languages</h2>
+    <h2>
+      <img src="language-icon.png" alt="Language Icon">
+      Languages
+    </h2>
     <ul>
       <li>Tamil – Native</li>
       <li>English – Fluent</li>
