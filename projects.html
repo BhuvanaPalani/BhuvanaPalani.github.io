@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projects | Bhuvana Portfolio</title>
+  <style>
+    /* ===== Base & Background ===== */
+    body{
+      font-family: system-ui, Arial, sans-serif;
+      margin: 0;
+      line-height: 1.6;
+      background: url('projects-bg.jpg') no-repeat center center fixed; /* ← your projects page background */
+      background-size: cover;
+      color: #222;
+    }
+
+    /* Back */
+    .back{
+      display:inline-block;
+      margin:20px;
+      text-decoration:none;
+      color:#222;
+      font-weight:bold;
+      font-size:1.1rem;
+      padding:6px 12px;
+      border-radius:6px;
+      transition: background .3s;
+    }
+    .back:hover{ background:#f2f2f2; }
+
+    /* Card wrapper */
+    main{
+      max-width: 950px;
+      margin: 40px auto;
+      padding: 24px;
+      background: rgba(255,255,255,0.93);
+      border-radius: 12px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+    }
+
+    /* Page title */
+    h1{
+      margin: 0 0 24px 0;
+      display:flex; align-items:center; justify-content:center; gap:10px;
+      text-align:center;
+    }
+    h1 img{ width:30px; height:30px; }
+
+    /* Project card */
+    .proj-card{
+      background:#fff;
+      border-radius:12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,.08);
+      padding:18px;
+      margin-bottom:18px;
+    }
+
+    /* Header: app icon + name (repo) */
+    .proj-header{
+      display:flex; align-items:center; gap:10px; margin-bottom:10px;
+    }
+    .proj-header img.app-ic{ width:22px; height:22px; }
+    .proj-title{
+      font-weight:800; font-size:1.05rem;
+    }
+    .repo{
+      color:#666; font-weight:600; margin-left:6px; font-size:.98rem;
+      white-space:nowrap;
+    }
+
+    /* Description row with info icon */
+    .desc{
+      display:flex; gap:8px; align-items:flex-start;
+      margin: 8px 0 10px 0;
+      color:#333;
+    }
+    .desc img.info-ic{ width:18px; height:18px; margin-top:3px; flex:0 0 auto; }
+    .desc .text{ flex:1 1 auto; }
+
+    /* “What I did” list with checkmarks */
+    .did{
+      list-style:none; padding-left:0; margin: 8px 0 0 0;
+    }
+    .did li{
+      position:relative; margin:6px 0; padding-left:24px;
+    }
+    .did li::before{
+      content:"✔";
+      position:absolute; left:0; top:0;
+      color:green; font-weight:700;
+    }
+
+    /* Subtle section break between groups, if needed */
+    .grid{
+      display:grid; gap:16px;
+    }
+
+    @media (max-width:700px){
+      main{ margin:20px 12px; padding:16px; }
+      .proj-title{ font-size:1rem; }
+      .repo{ font-size:.95rem; }
+    }
+  </style>
+</head>
+<body>
+  <a href="index.html" class="back">← Back</a>
+
+  <main>
+    <h1><img src="projects-icon.png" alt="Projects"> Projects</h1>
+
+    <section class="grid">
+
+      <!-- 1️⃣ Currency Converter App -->
+      <article class="proj-card">
+        <div class="proj-header">
+          <img src="app-icon.png" alt="App" class="app-ic">
+          <div class="proj-title">1️⃣ Currency Converter App <span class="repo">(currency-converter-app)</span></div>
+        </div>
+        <div class="desc">
+          <img src="info-icon.png" alt="Info" class="info-ic">
+          <div class="text">Built an Android app that converts money between different currencies with numeric-only input and instant calculation.</div>
+        </div>
+        <ul class="did">
+          <li>Designed and implemented the UI using XML layouts (ConstraintLayout, LinearLayout).</li>
+          <li>Developed conversion logic in Kotlin for accurate results.</li>
+          <li>Added input validation to ensure only numeric values are accepted.</li>
+          <li>Tested functionality in Android Studio to verify conversion accuracy.</li>
+        </ul>
+      </article>
+
+      <!-- 2️⃣ Mortgage Calculator App -->
+      <article class="proj-card">
+        <div class="proj-header">
+          <img src="app-icon.png" alt="App" class="app-ic">
+          <div class="proj-title">2️⃣ Mortgage Calculator App <span class="repo">(mortgage-calculator-app)</span></div>
+        </div>
+        <div class="desc">
+          <img src="info-icon.png" alt="Info" class="info-ic">
+          <div class="text">Created an Android app that calculates monthly mortgage payments using the standard mortgage formula.</div>
+        </div>
+        <ul class="did">
+          <li>Built onboarding and main screens using Material Components with XML layouts (ConstraintLayout, LinearLayout).</li>
+          <li>Implemented mortgage calculation logic in Kotlin with error handling for missing inputs.</li>
+          <li>Ensured numeric-only fields using Android input types.</li>
+          <li>Validated results across test scenarios for accuracy.</li>
+        </ul>
+      </article>
+
+      <!-- 3️⃣ Tip Calculator App -->
+      <article class="proj-card">
+        <div class="proj-header">
+          <img src="app-icon.png" alt="App" class="app-ic">
+          <div class="proj-title">3️⃣ Tip Calculator App <span class="repo">(tip-calculator-app)</span></div>
+        </div>
+        <div class="desc">
+          <img src="info-icon.png" alt="Info" class="info-ic">
+          <div class="text">Developed an Android app that calculates tip and total bill amount with restrictions for valid tip percentages.</div>
+        </div>
+        <ul class="did">
+          <li>Designed input screens using XML layouts (ConstraintLayout, LinearLayout).</li>
+          <li>Added calculation logic in Kotlin with automatic updates when inputs change.</li>
+          <li>Implemented validation to allow only 0–20% tip.</li>
+          <li>Tested various bill and tip combinations in Android Studio.</li>
+        </ul>
+      </article>
+
+      <!-- 4️⃣ Age Calculator App -->
+      <article class="proj-card">
+        <div class="proj-header">
+          <img src="app-icon.png" alt="App" class="app-ic">
+          <div class="proj-title">4️⃣ Age Calculator App <span class="repo">(age-calculator-app)</span></div>
+        </div>
+        <div class="desc">
+          <img src="info-icon.png" alt="Info" class="info-ic">
+          <div class="text">Built an Android app that calculates age in years, months, weeks, days, hours, and minutes.</div>
+        </div>
+        <ul class="did">
+          <li>Designed input forms with XML layouts (ConstraintLayout, LinearLayout).</li>
+          <li>Implemented age calculation in Kotlin using the Calendar API.</li>
+          <li>Validated inputs for correct year/month ranges.</li>
+          <li>Tested multiple cases in Android Studio to ensure calculation correctness.</li>
+        </ul>
+      </article>
+
+      <!-- 5️⃣ Coffee Login App -->
+      <article class="proj-card">
+        <div class="proj-header">
+          <img src="app-icon.png" alt="App" class="app-ic">
+          <div class="proj-title">5️⃣ Coffee Login App <span class="repo">(coffee-login-app)</span></div>
+        </div>
+        <div class="desc">
+          <img src="info-icon.png" alt="Info" class="info-ic">
+          <div class="text">Developed an Android app with a coffee-themed welcome, login, and register screens.</div>
+        </div>
+        <ul class="did">
+          <li>Created UI with XML layouts (ConstraintLayout, LinearLayout) following the coffee theme.</li>
+          <li>Implemented form validation in Kotlin for email, name, and required fields.</li>
+          <li>Applied Material Components for modern, accessible UI.</li>
+          <li>Tested usability and collected peer feedback for improvements.</li>
+        </ul>
+      </article>
+
+      <!-- 6️⃣ BMI Calculator App -->
+      <article class="proj-card">
+        <div class="proj-header">
+          <img src="app-icon.png" alt="App" class="app-ic">
+          <div class="proj-title">6️⃣ BMI Calculator App <span class="repo">(bmi-calculator-app)</span></div>
+        </div>
+        <div class="desc">
+          <img src="info-icon.png" alt="Info" class="info-ic">
+          <div class="text">Created an Android app that calculates BMI from height (cm) and weight (kg).</div>
+        </div>
+        <ul class="did">
+          <li>Designed input fields with XML layouts (ConstraintLayout, LinearLayout).</li>
+          <li>Implemented BMI formula in Kotlin with results limited to one decimal place.</li>
+          <li>Enabled auto-update whenever inputs changed using listeners in Android Studio.</li>
+          <li>Verified results with multiple test values.</li>
+        </ul>
+      </article>
+
+      <!-- 7️⃣ Temperature Converter App -->
+      <article class="proj-card">
+        <div class="proj-header">
+          <img src="app-icon.png" alt="App" class="app-ic">
+          <div class="proj-title">7️⃣ Temperature Converter App <span class="repo">(temperature-converter-app)</span></div>
+        </div>
+        <div class="desc">
+          <img src="info-icon.png" alt="Info" class="info-ic">
+          <div class="text">Built an Android app that converts temperatures between Celsius, Fahrenheit, and Kelvin.</div>
+        </div>
+        <ul class="did">
+          <li>Designed UI with XML layouts (ConstraintLayout, LinearLayout).</li>
+          <li>Implemented conversion formulas in Kotlin for accurate results.</li>
+          <li>Added numeric-only input validation.</li>
+          <li>Conducted testing in Android Studio to check edge cases.</li>
+        </ul>
+      </article>
+
+      <!-- 8️⃣ Login Register App -->
+      <article class="proj-card">
+        <div class="proj-header">
+          <img src="app-icon.png" alt="App" class="app-ic">
+          <div class="proj-title">8️⃣ Login Register App <span class="repo">(login-register-app)</span></div>
+        </div>
+        <div class="desc">
+          <img src="info-icon.png" alt="Info" class="info-ic">
+          <div class="text">Built an Android app with login and create account screens to demonstrate basic authentication flow.</div>
+        </div>
+        <ul class="did">
+          <li>Designed login and register screens using XML layouts (ConstraintLayout, LinearLayout).</li>
+          <li>Implemented validation in Kotlin for email format, required fields, and name input.</li>
+          <li>Designed a simple and user-friendly interface with Material Components.</li>
+          <li>Tested multiple scenarios to ensure validation works correctly.</li>
+        </ul>
+      </article>
+
+    </section>
+  </main>
+</body>
+</html>
