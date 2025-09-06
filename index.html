@@ -11,25 +11,73 @@
       line-height: 1.6;
       background: url('android-bg.jpg') no-repeat center center fixed;
       background-size: cover;
-      color: white;
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+      color: #222; 
     }
-    header { padding: 40px 20px; text-align: center; }
-    nav { text-align: center; background: rgba(0,0,0,0.6); padding: 12px; position: sticky; top: 0; }
-    nav a { margin: 0 10px; text-decoration: none; color: #fff; font-weight: bold; }
+    nav {
+      text-align: center;
+      background: rgba(255,255,255,0.7);
+      padding: 12px;
+      position: sticky;
+      top: 0;
+    }
+    nav a {
+      margin: 0 10px;
+      text-decoration: none;
+      color: #222;
+      font-weight: bold;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 40px;
+      background: rgba(255,255,255,0.7);
+      border-radius: 12px;
+    }
+    .intro {
+      flex: 1;
+      padding-right: 20px;
+    }
+    .intro h1 {
+      margin-top: 0;
+    }
+    .profile-photo {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      border: 3px solid #222;
+      object-fit: cover;
+    }
+    @media (max-width: 700px) {
+      header {
+        flex-direction: column;
+        text-align: center;
+      }
+      .intro {
+        padding-right: 0;
+      }
+      .profile-photo {
+        margin-top: 20px;
+      }
+    }
   </style>
 </head>
 <body>
   <nav>
     <a href="profile.html">Profile</a>
     <a href="projects.html">Projects</a>
-    <a href="skills.html">Skills</a>
-    <a href="contact.html">Contact</a>
+    <a href="skills.html">Skills And Interest</a>
+    <a href="Contact.html">Contact</a>
   </nav>
 
   <header>
-    <h1>Hi, I'm Bhuvana Palaniappan 👋</h1>
-    <p>Android Developer Intern — Kotlin. </p>
+    <div class="intro">
+      <h1>Hi, I'm Bhuvana Palaniappan 👋</h1>
+      <p>Android Developer Intern — Kotlin </p>
+    </div>
+    <img src="bhuvana.jpg" alt="Bhuvaneshwari Photo" class="profile-photo">
   </header>
 </body>
 </html>
