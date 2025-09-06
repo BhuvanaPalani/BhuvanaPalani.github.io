@@ -123,10 +123,10 @@
 
       /* smaller photo, lifted and centered inside the screen area */
       .profile-photo{
-        width: 110px;
-        height: 110px;
+        width: 100px;
+        height: 100px;
         margin: 0;
-        transform: translateY(-6vh); /* raise photo; -5vh lower, -7vh higher */
+        transform: translateY(-7vh); /* raise photo; -5vh lower, -7vh higher */
       }
     }
   </style>
@@ -147,6 +147,13 @@
       <h1>Hi 👋</h1>
       <h1>I'm Bhuvana Palaniappan</h1>
       <p>Android Developer Intern — Kotlin</p>
+
+       <!-- Mobile-only: gap under the subtitle so “Kotlin” never touches the Android -->
+       <span class="spacer-after-text" aria-hidden="true"></span>
+      </div>
+  
+      <!-- Mobile-only: small gap before showing the photo -->
+      <span class="spacer-before-photo" aria-hidden="true"></span>
 
      
 
