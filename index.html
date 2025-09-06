@@ -5,6 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Bhuvaneshwari | Developer Portfolio</title>
   <style>
+    :root{
+      /* Desktop defaults (unused on mobile) */
+      --top-gap: 0vh;
+      --after-text-gap: 0vh;
+      --before-photo-gap: 0vh;
+    }
+
     body{
       font-family: system-ui, Arial, sans-serif;
       margin:0;
@@ -42,46 +49,57 @@
       width:180px; height:180px; border-radius:50%; border:3px solid #222; object-fit:cover;
     }
 
-    /* hidden by default; used only on phones */
-    .spacer-top,.spacer-between{ display:none; }
+    /* Hidden by default (only used on mobile) */
+    .spacer-top,.spacer-after-text,.spacer-before-photo{ display:none; }
 
-    /* -------- MOBILE -------- */
+    /* ---------- MOBILE LAYOUT ---------- */
     @media (max-width:700px){
-      /* fixed backgrounds act weird on phones */
-      body{ background-attachment:scroll; background-position:center top; }
+      /* Set the 3 mobile control knobs here:
+         Increase --top-gap  to push text down (further above doll).
+         Increase --after-text-gap to add space under "Kotlin".
+         Increase --before-photo-gap to push photo down; decrease to pull it up. */
+      :root{
+        --top-gap: 6vh;         /* text starts a bit lower under the nav */
+        --after-text-gap: 5vh;  /* breathing room under subtitle so it never touches doll */
+        --before-photo-gap: 10vh; /* distance from bottom of text block to photo; LOWER pulls photo up inside the screen */
+      }
+
+      /* Background: scroll + nudge slightly down so phone is framed well */
+      body{
+        background-attachment:scroll;
+        background-position:center 6vh;
+      }
 
       .nav-inner{ padding:10px 12px; gap:8px 14px; }
       .nav-inner a{ font-size:.98rem; padding:6px 8px; }
 
       header{
         flex-direction:column; align-items:center; text-align:center;
-        margin:24px 12px 40px; padding:0;
+        margin:0 12px 36px; padding:0;
+        max-width:none;       /* use full width for safer placement */
       }
+
       .intro{
-        margin-left:0; padding-right:0; max-width:22ch;
+        margin-left:0; padding-right:0;
+        max-width:22ch;       /* tidy line length */
       }
       .intro h1{ font-size:1.8rem; }
       .intro p{ font-size:1rem; }
 
-      /* keep the text CLEAR OF the Android top area */
+      /* Spacers actually used on mobile */
       .spacer-top{
-        display:block; height:80px; /* was 60px */
+        display:block; height:var(--top-gap);
+      }
+      .spacer-after-text{
+        display:block; height:var(--after-text-gap);
+      }
+      .spacer-before-photo{
+        display:block; height:var(--before-photo-gap);
       }
 
-      /* give extra gap under the subtitle so "Kotlin" never touches */
-      .intro .subtitle{
-        display:block; margin-bottom:24px; /* explicit safe space below text */
-      }
-
-      /* push the photo well BELOW the green Android */
-      .spacer-between{
-        display:block;
-        height:28vh;      /* ~28% of screen height. Increase if still close */
-      }
-
+      /* Photo smaller so it fits inside the phone screen comfortably */
       .profile-photo{
-        width:130px; height:130px;   /* a bit smaller so it fits comfortably */
-        margin-top:0;
+        width:128px; height:128px; margin:0;
       }
     }
   </style>
@@ -97,7 +115,7 @@
   </nav>
 
   <header>
-    <!-- pushes text down a bit on phones so it's above the phone bezel -->
+    <!-- push the heading block down a bit on phones -->
     <div class="spacer-top" aria-hidden="true"></div>
 
     <div class="intro">
@@ -106,8 +124,11 @@
       <p class="subtitle">Android Developer Intern — Kotlin</p>
     </div>
 
-    <!-- keeps your photo under the green Android on phones -->
-    <div class="spacer-between" aria-hidden="true"></div>
+    <!-- add space under the subtitle so "Kotlin" never touches the doll -->
+    <div class="spacer-after-text" aria-hidden="true"></div>
+
+    <!-- adjust this gap to place the photo inside the phone screen (not touching the doll) -->
+    <div class="spacer-before-photo" aria-hidden="true"></div>
 
     <img src="bhuvana.jpg" alt="Bhuvaneshwari Photo" class="profile-photo">
   </header>
