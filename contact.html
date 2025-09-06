@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact | Bhuvaneshwari Portfolio</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, Arial, sans-serif;
+      background: url('background-brown-design.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #222;
+      line-height: 1.6;
+    }
+
+    
+    .back {
+      display: inline-block;
+      margin: 20px;
+      text-decoration: none;
+      color: #222;
+      font-weight: bold;
+      font-size: 1.1rem;
+      padding: 6px 12px;
+      border-radius: 6px;
+      transition: background 0.3s, transform 0.1s;
+    }
+    .back:hover { background: #f2f2f2; }
+    .back:active { transform: translateY(1px); }
+
+    
+    main {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 32px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    h1 { margin-top: 0; font-size: 2rem; }
+    .sub { color: #555; margin-bottom: 24px; }
+
+    
+    ul { list-style: none; padding: 0; margin: 0; }
+    li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+      padding: 10px;
+      border-radius: 12px;
+      transition: background 0.3s;
+    }
+    li:hover { background: #f2f2f2; }
+
+    
+    .circle {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s, transform 0.2s;
+    }
+    .circle img {
+      width: 22px;
+      height: 22px;
+    }
+
+    
+    .loc { background: #4caf50; }      
+    .phone { background: #26a69a; }  
+    .mail { background: #ef5350; }    
+    .linkedin { background: #0a66c2; } 
+    .github { background: #24292e; }  
+
+   
+    .circle.loc:hover { background: #66bb6a; transform: scale(1.1); }
+    .circle.phone:hover { background: #4db6ac; transform: scale(1.1); }
+    .circle.mail:hover { background: #e57373; transform: scale(1.1); }
+    .circle.linkedin:hover { background: #0077b5; transform: scale(1.1); }
+    .circle.github:hover { background: #444; transform: scale(1.1); }
+
+    .label { font-weight: bold; }
+    .value a, .value {
+      color: #555;
+      text-decoration: none;
+    }
+    .value a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <a href="index.html" class="back"> Back</a>
+
+  <main>
+    <h1>Contact Me</h1>
+    <p class="sub">Happy to connect! You can reach me through any of the options below.</p>
+
+    <ul>
+      <li>
+        <div class="circle loc"><img src="map-icon.png" alt="Location"></div>
+        <div>
+          <div class="label">Location</div>
+          <div class="value">Göteborg, Sweden</div>
+        </div>
+      </li>
+
+      <li>
+        <div class="circle phone"><img src="phone-icon.png" alt="Phone"></div>
+        <div>
+          <div class="label">Phone</div>
+          <div class="value"><a href="tel:+46769538816">+46 769538816</a></div>
+        </div>
+      </li>
+
+      <li>
+        <div class="circle mail"><img src="gmail-icon.png" alt="Email"></div>
+        <div>
+          <div class="label">Email</div>
+          <div class="value"><a href="mailto:bhuvi.pavi@gmail.com">bhuvi.pavi@gmail.com</a></div>
+        </div>
+      </li>
+
+      <li>
+        <div class="circle linkedin"><img src="linkedin-icon.png" alt="LinkedIn"></div>
+        <div>
+          <div class="label">LinkedIn</div>
+          <div class="value"><a href="www.linkedin.com/in/bhuvana-palaniappan" target="_blank">linkedin.com/in/bhuvana-palaniappan</a></div>
+        </div>
+      </li>
+
+      <li>
+        <div class="circle github"><img src="github-icon.png" alt="GitHub"></div>
+        <div>
+          <div class="label">GitHub</div>
+          <div class="value"><a href="https://github.com/BhuvanaPalani" target="_blank">github.com/BhuvanaPalani</a></div>
+        </div>
+      </li>
+    </ul>
+  </main>
+</body>
+</html>
