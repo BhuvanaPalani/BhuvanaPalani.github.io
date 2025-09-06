@@ -6,7 +6,6 @@
   <title>Bhuvaneshwari | Developer Portfolio</title>
   <style>
     :root{
-      /* Desktop defaults (unused on mobile) */
       --top-gap: 0vh;
       --after-text-gap: 0vh;
       --before-photo-gap: 0vh;
@@ -49,25 +48,21 @@
       width:180px; height:180px; border-radius:50%; border:3px solid #222; object-fit:cover;
     }
 
-    /* Hidden by default (only used on mobile) */
+    /* hidden by default; used only on phones */
     .spacer-top,.spacer-after-text,.spacer-before-photo{ display:none; }
 
     /* ---------- MOBILE LAYOUT ---------- */
     @media (max-width:700px){
-      /* Set the 3 mobile control knobs here:
-         Increase --top-gap  to push text down (further above doll).
-         Increase --after-text-gap to add space under "Kotlin".
-         Increase --before-photo-gap to push photo down; decrease to pull it up. */
       :root{
-        --top-gap: 6vh;         /* text starts a bit lower under the nav */
-        --after-text-gap: 5vh;  /* breathing room under subtitle so it never touches doll */
-        --before-photo-gap: 10vh; /* distance from bottom of text block to photo; LOWER pulls photo up inside the screen */
+        /* TUNE THESE THREE if needed */
+        --top-gap: 9vh;          /* push “Hi 👋” a bit lower */
+        --after-text-gap: 6vh;   /* room under “Kotlin” */
+        --before-photo-gap: 4vh; /* pull photo upward into screen */
       }
 
-      /* Background: scroll + nudge slightly down so phone is framed well */
       body{
         background-attachment:scroll;
-        background-position:center 6vh;
+        background-position:center 6vh;  /* keeps phone nicely framed */
       }
 
       .nav-inner{ padding:10px 12px; gap:8px 14px; }
@@ -75,31 +70,22 @@
 
       header{
         flex-direction:column; align-items:center; text-align:center;
-        margin:0 12px 36px; padding:0;
-        max-width:none;       /* use full width for safer placement */
+        margin:0 12px 36px; padding:0; max-width:none;
       }
-
       .intro{
-        margin-left:0; padding-right:0;
-        max-width:22ch;       /* tidy line length */
+        margin-left:0; padding-right:0; max-width:22ch;
       }
       .intro h1{ font-size:1.8rem; }
       .intro p{ font-size:1rem; }
 
-      /* Spacers actually used on mobile */
-      .spacer-top{
-        display:block; height:var(--top-gap);
-      }
-      .spacer-after-text{
-        display:block; height:var(--after-text-gap);
-      }
-      .spacer-before-photo{
-        display:block; height:var(--before-photo-gap);
-      }
+      .spacer-top{ display:block; height:var(--top-gap); }
+      .spacer-after-text{ display:block; height:var(--after-text-gap); }
+      .spacer-before-photo{ display:block; height:var(--before-photo-gap); }
 
-      /* Photo smaller so it fits inside the phone screen comfortably */
       .profile-photo{
-        width:128px; height:128px; margin:0;
+        width:128px; height:128px;
+        margin:0;
+        transform: translateY(-2vh); /* final nudge UP */
       }
     }
   </style>
@@ -115,7 +101,7 @@
   </nav>
 
   <header>
-    <!-- push the heading block down a bit on phones -->
+    <!-- push heading block down a bit -->
     <div class="spacer-top" aria-hidden="true"></div>
 
     <div class="intro">
@@ -124,10 +110,10 @@
       <p class="subtitle">Android Developer Intern — Kotlin</p>
     </div>
 
-    <!-- add space under the subtitle so "Kotlin" never touches the doll -->
+    <!-- room below subtitle so “Kotlin” never touches the doll -->
     <div class="spacer-after-text" aria-hidden="true"></div>
 
-    <!-- adjust this gap to place the photo inside the phone screen (not touching the doll) -->
+    <!-- adjust placement of photo relative to the Android -->
     <div class="spacer-before-photo" aria-hidden="true"></div>
 
     <img src="bhuvana.jpg" alt="Bhuvaneshwari Photo" class="profile-photo">
