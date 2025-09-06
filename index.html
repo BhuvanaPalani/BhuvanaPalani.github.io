@@ -39,50 +39,54 @@
     
     header {
       display: flex;
+      justify-content: flex-start; 
       align-items: center;
-      gap: 32px;                 
-      width: min(1100px, 100%);
-      margin: 60px 5vw;          
-      padding: 0;                
-      justify-content: flex-start;
+      gap: 32px;
+      max-width: 1000px;
+      margin: 60px auto;
+      padding: 40px;
     }
 
+    
     .intro {
-     flex: 1;
-     padding-right: 20px;
-     margin-left: -120px; /* move text more left (adjust value if needed) */
-}
-
+      flex: 1;
+      padding-right: 20px;
+      margin-left: -100px; 
+    }
     .intro h1 {
-     margin-top: 0;
-     margin-bottom: 8px; /* tighten gap */
-     font-size: 2.5rem;
-     font-weight: 700;
+      margin: 0 0 8px 0;
+      font-size: 2.3rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    .intro p {
+      margin: 0;
+      font-size: 1.2rem;
     }
 
-    .intro p {
-     margin-top: 0;
-     font-size: 1.2rem;
-     }
-
+    
     .profile-photo {
       width: 180px;
       height: 180px;
       border-radius: 50%;
       border: 3px solid #222;
       object-fit: cover;
-      flex: 0 0 180px;
     }
 
-    /* Mobile */
+    
     @media (max-width: 700px) {
       header {
         flex-direction: column;
         text-align: center;
-        margin: 40px 16px;       
+        margin: 40px 16px;
+        padding: 20px;
       }
       .intro {
-        flex-basis: auto;
+        margin-left: 0;
+        padding-right: 0;
+      }
+      .profile-photo {
+        margin-top: 20px;
       }
     }
   </style>
@@ -97,7 +101,8 @@
 
   <header>
     <div class="intro">
-      <h1>Hi, I'm Bhuvana Palaniappan 👋</h1>
+      <h1>Hi👋,</h1>
+      <h1>I'm Bhuvana Palaniappan </h1>
       <p>Android Developer Intern — Kotlin</p>
     </div>
     <img src="bhuvana.jpg" alt="Bhuvaneshwari Photo" class="profile-photo">
