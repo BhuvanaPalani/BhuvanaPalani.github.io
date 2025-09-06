@@ -16,40 +16,43 @@
 
     
     nav {
-      text-align: center;
-      background: #fff; 
-      padding: 16px;
       position: sticky;
       top: 0;
       z-index: 1000;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.15); 
+      background: #fff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
     }
-    nav a {
-      margin: 0 10px;
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 12px 16px;
+      display: flex;
+      flex-wrap: wrap;              
+      justify-content: center;
+      gap: 12px 18px;               
+    }
+    .nav-inner a {
       text-decoration: none;
       color: #222;
-      font-weight: bold;
-      padding: 6px 12px;
+      font-weight: 700;
+      padding: 6px 10px;
       border-radius: 6px;
-      transition: background 0.3s, color 0.3s;
+      transition: background .3s, color .3s;
+      white-space: nowrap;          
     }
-    nav a:hover {
-      background: #e0e0e0;
-      color: #000;
-    }
+    .nav-inner a:hover { background: #eaeaea; color: #000; }
 
     
     header {
       display: flex;
-      justify-content: flex-start;
+      justify-content: space-between;
       align-items: center;
       gap: 32px;
       max-width: 1000px;
       margin: 60px auto;
-      padding: 40px;
+      padding: 40px 16px;
     }
 
-    
     .intro {
       flex: 1;
       padding-right: 20px;
@@ -61,12 +64,8 @@
       font-weight: 700;
       line-height: 1.2;
     }
-    .intro p {
-      margin: 0;
-      font-size: 1.2rem;
-    }
+    .intro p { margin: 0; font-size: 1.2rem; }
 
-    
     .profile-photo {
       width: 180px;
       height: 180px;
@@ -76,29 +75,52 @@
     }
 
     
+    .spacer-mobile { display: none; }
+
+    
     @media (max-width: 700px) {
+      
+      body { background-attachment: scroll; background-position: center top; }
+
+      .nav-inner { padding: 10px 12px; gap: 8px 14px; }
+      .nav-inner a { font-size: 0.98rem; padding: 6px 8px; }
+
       header {
-        flex-direction: column;
+        flex-direction: column;     
+        align-items: center;
         text-align: center;
-        margin: 40px 16px;
-        padding: 20px;
+        margin: 28px 12px 40px;
+        padding: 0;                 
       }
       .intro {
-        margin-left: 0;
+        margin-left: 0;             
         padding-right: 0;
       }
+      .intro h1 { font-size: 1.8rem; }
+      .intro p  { font-size: 1rem; }
+
+     
+      .spacer-mobile {
+        display: block;
+        height: 180px;              
+      }
+
       .profile-photo {
-        margin-top: 20px;
+        width: 150px;
+        height: 150px;
+        margin: 8px 0 0 0;
       }
     }
   </style>
 </head>
 <body>
   <nav>
-    <a href="profile.html">Profile</a>
-    <a href="projects.html">Projects</a>
-    <a href="skills.html">Skills And Interest</a>
-    <a href="contact.html">Contact</a>
+    <div class="nav-inner">
+      <a href="profile.html">Profile</a>
+      <a href="projects.html">Projects</a>
+      <a href="skills.html">Skills and Interest</a>
+      <a href="contact.html">Contact</a>
+    </div>
   </nav>
 
   <header>
@@ -107,6 +129,10 @@
       <h1>I'm Bhuvana Palaniappan</h1>
       <p>Android Developer Intern — Kotlin</p>
     </div>
+
+  
+    <div class="spacer-mobile" aria-hidden="true"></div>
+
     <img src="bhuvana.jpg" alt="Bhuvaneshwari Photo" class="profile-photo">
   </header>
 </body>
