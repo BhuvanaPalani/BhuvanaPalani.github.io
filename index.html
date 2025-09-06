@@ -36,23 +36,22 @@
     }
     nav a:hover{ background:#e0e0e0; color:#000; }
 
-    header{
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 900px;
-      margin: 60px auto;
-      padding: 40px 16px;
-      gap: 64px;                 /* more room between text and phone */
-    }
+    header {
+  display: flex;
+  justify-content: flex-start; /* ✅ align items from left */
+  align-items: center;
+  max-width: 1100px;
+  margin: 60px auto;
+  padding: 40px 16px;
+  gap: 120px;   /* ✅ BIGGER gap between text and phone */
+}
 
-    /* Desktop intro text column */
-    .intro{
-      margin-left: 40px;         /* keep text on the left */
-      padding-right: 56px;       /* buffer so text never kisses the phone */
-      text-align: left;
-      max-width: 460px;          /* force wrap before phone */
-    }
+.intro {
+  margin-left: 40px;     /* ✅ keeps text inset from left edge */
+  margin-right: 40px;    /* ✅ adds breathing room before phone */
+  text-align: left;
+  max-width: 420px;      /* ✅ forces text wrap, avoids overflow */
+}
     .intro h1{
       margin: 0 0 8px 0;
       font-size: 2rem;
