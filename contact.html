@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Contact | Bhuvaneshwari Portfolio</title>
   <style>
+    /* Base */
+    html { -webkit-text-size-adjust: 100%; }
     body {
       margin: 0;
       font-family: system-ui, Arial, sans-serif;
@@ -14,82 +16,103 @@
       line-height: 1.6;
     }
 
-    
+    /* Back link */
     .back {
       display: inline-block;
-      margin: 20px;
+      margin: 16px;
       text-decoration: none;
       color: #222;
       font-weight: bold;
-      font-size: 1.1rem;
-      padding: 6px 12px;
-      border-radius: 6px;
+      font-size: 1.05rem;
+      padding: 8px 12px;
+      border-radius: 8px;
       transition: background 0.3s, transform 0.1s;
     }
     .back:hover { background: #f2f2f2; }
     .back:active { transform: translateY(1px); }
 
-    
+    /* Card */
     main {
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 32px;
+      max-width: 860px;
+      margin: 32px auto 72px;
+      padding: 28px;
       background: rgba(255, 255, 255, 0.9);
       border-radius: 16px;
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      backdrop-filter: blur(2px);
     }
 
-    h1 { margin-top: 0; font-size: 2rem; }
-    .sub { color: #555; margin-bottom: 24px; }
+    h1 { margin: 0 0 6px 0; font-size: 2rem; }
+    .sub { color: #555; margin: 0 0 24px 0; }
 
-    
-    ul { list-style: none; padding: 0; margin: 0; }
+    /* Contact list: grid keeps icons and text aligned on any width */
+    ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+
     li {
-      display: flex;
+      display: grid;
+      grid-template-columns: 44px 1fr; /* icon column + content column */
       align-items: center;
       gap: 12px;
-      margin-bottom: 16px;
-      padding: 10px;
+      padding: 12px;
       border-radius: 12px;
       transition: background 0.3s;
     }
     li:hover { background: #f2f2f2; }
 
-    
+    /* Round icon circles */
     .circle {
-      width: 40px;
-      height: 40px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: grid;
+      place-items: center;
       transition: background 0.3s, transform 0.2s;
     }
-    .circle img {
-      width: 22px;
-      height: 22px;
-    }
+    .circle img { width: 22px; height: 22px; display: block; }
 
-    
-    .loc { background: #4caf50; }      
-    .phone { background: #26a69a; }  
-    .mail { background: #ef5350; }    
-    .linkedin { background: #0a66c2; } 
-    .github { background: #24292e; }  
+    /* Brand colors */
+    .loc      { background: #4caf50; }
+    .phone    { background: #26a69a; }
+    .mail     { background: #ef5350; }
+    .linkedin { background: #0a66c2; }
+    .github   { background: #24292e; }
 
-   
-    .circle.loc:hover { background: #66bb6a; transform: scale(1.1); }
-    .circle.phone:hover { background: #4db6ac; transform: scale(1.1); }
-    .circle.mail:hover { background: #e57373; transform: scale(1.1); }
-    .circle.linkedin:hover { background: #0077b5; transform: scale(1.1); }
-    .circle.github:hover { background: #444; transform: scale(1.1); }
+    /* Icon hover effects */
+    .circle.loc:hover      { background: #66bb6a; transform: scale(1.08); }
+    .circle.phone:hover    { background: #4db6ac; transform: scale(1.08); }
+    .circle.mail:hover     { background: #e57373; transform: scale(1.08); }
+    .circle.linkedin:hover { background: #0077b5; transform: scale(1.08); }
+    .circle.github:hover   { background: #444;     transform: scale(1.08); }
 
     .label { font-weight: bold; }
-    .value a, .value {
+    .value, .value a {
       color: #555;
       text-decoration: none;
+      /* keep long links from breaking layout on mobile */
+      word-break: break-word;
+      overflow-wrap: anywhere;
     }
     .value a:hover { text-decoration: underline; }
+
+    /* Mobile tweaks */
+    @media (max-width: 600px) {
+      /* Fixed backgrounds can jitter on mobile; use scroll + top position */
+      body { background-attachment: scroll; background-position: center top; }
+
+      .back { margin: 12px; font-size: 1rem; padding: 8px 10px; }
+      main  { margin: 16px 12px 48px; padding: 20px; border-radius: 14px; }
+
+      li {
+        grid-template-columns: 40px 1fr;
+        gap: 10px;
+        padding: 10px;
+      }
+      .circle { width: 40px; height: 40px; }
+      .circle img { width: 20px; height: 20px; }
+
+      h1 { font-size: 1.6rem; }
+      .sub { font-size: 0.98rem; }
+    }
   </style>
 </head>
 <body>
@@ -128,7 +151,11 @@
         <div class="circle linkedin"><img src="linkedin-icon.png" alt="LinkedIn"></div>
         <div>
           <div class="label">LinkedIn</div>
-          <div class="value"><a href="www.linkedin.com/in/bhuvana-palaniappan" target="_blank">linkedin.com/in/bhuvana-palaniappan</a></div>
+          <div class="value">
+            <a href="https://www.linkedin.com/in/bhuvana-palaniappan" target="_blank" rel="noopener">
+              linkedin.com/in/bhuvana-palaniappan
+            </a>
+          </div>
         </div>
       </li>
 
@@ -136,7 +163,11 @@
         <div class="circle github"><img src="github-icon.png" alt="GitHub"></div>
         <div>
           <div class="label">GitHub</div>
-          <div class="value"><a href="https://github.com/BhuvanaPalani" target="_blank">github.com/BhuvanaPalani</a></div>
+          <div class="value">
+            <a href="https://github.com/BhuvanaPalani" target="_blank" rel="noopener">
+              github.com/BhuvanaPalani
+            </a>
+          </div>
         </div>
       </li>
     </ul>
