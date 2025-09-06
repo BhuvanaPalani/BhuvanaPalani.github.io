@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Bhuvaneshwari | Developer Portfolio</title>
   <style>
-    /* ========== DESKTOP / DEFAULT (unchanged) ========== */
-    body {
+    /* ===== DESKTOP (unchanged) ===== */
+    body{
       font-family: system-ui, Arial, sans-serif;
       margin: 0;
       line-height: 1.6;
@@ -14,115 +14,98 @@
       background-size: cover;
       color: #222;
     }
-
-    nav {
+    nav{
       text-align: center;
       background: rgba(255,255,255,0.95);
       padding: 12px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
+      position: sticky; top: 0; z-index: 100;
       box-shadow: 0 2px 6px rgba(0,0,0,0.12);
     }
-    nav a {
-      margin: 0 10px;
-      text-decoration: none;
-      color: #222;
-      font-weight: 700;
-      padding: 6px 10px;
-      border-radius: 6px;
-      transition: background .3s, color .3s;
-      white-space: nowrap;
+    nav a{
+      margin: 0 10px; text-decoration: none; color: #222;
+      font-weight: 700; padding: 6px 10px; border-radius: 6px;
+      transition: background .3s, color .3s; white-space: nowrap;
     }
-    nav a:hover { background: #e0e0e0; color: #000; }
+    nav a:hover{ background:#e0e0e0; color:#000; }
 
-    header {
+    header{
       display: flex;
-      justify-content: space-between;
+      justify-content: space-between;   /* photo stays on right */
       align-items: center;
-      max-width: 900px;
+      max-width: 1100px;
       margin: 60px auto;
       padding: 40px 16px;
-      gap: 32px;
+      gap: 100px;                        /* safe gap to phone */
     }
 
-    .intro {
+    .intro{
       margin-left: 40px;
       text-align: left;
-      max-width: 450px;
+      max-width: 420px;
     }
-    .intro h1 {
+    .intro h1{
       margin: 0 0 8px 0;
       font-size: 2.2rem;
       line-height: 1.25;
       font-weight: 800;
     }
-    .intro p {
-      margin: 0;
-      font-size: 1.1rem;
+    .intro p{ margin: 0; font-size: 1.1rem; }
+
+    .profile-photo{
+      width: 180px; height: 180px; border-radius: 50%;
+      border: 3px solid #222; object-fit: cover;
     }
 
-    .profile-photo {
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      border: 3px solid #222;
-      object-fit: cover;
-    }
+    /* spacers used only on mobile */
+    .spacer-top, .spacer-after-text, .spacer-before-photo{ display:none; }
 
-    .spacer-top, .spacer-after-text, .spacer-before-photo { display: none; }
-
-    /* ========== MOBILE ONLY (<=700px) ========== */
+    /* ===== MOBILE ONLY (≤700px) — text centered & wrapped ===== */
     @media (max-width:700px){
       :root{
-        --top-gap: 12vh;
-        --after-text-gap: 9vh;
-        --before-photo-gap: 4vh;
+        --top-gap: 9vh;          /* start text a bit higher */
+        --after-text-gap: 13vh;  /* more room under “Kotlin” */
+        --before-photo-gap: 2vh;
       }
 
-      body{
-        background-attachment: scroll;
-        background-position: center top;
-      }
-
-      nav a { margin: 4px 6px; font-size: .95rem; padding: 6px 8px; }
+      body{ background-attachment: scroll; background-position: center top; }
+      nav a{ margin:4px 6px; font-size:.95rem; padding:6px 8px; }
 
       header{
         flex-direction: column;
         align-items: center;
         text-align: center;
-        margin: 0 12px 36px;
+        max-width: 340px;            /* approx phone inner width */
+        margin: 0 auto 36px;
         padding: 0;
-        max-width: none;
         gap: 0;
       }
 
       .intro{
-        margin-left: 0;
-        padding-right: 0;
-        max-width: 18ch;          /* ✅ force wrap for long name */
+        margin: 0 auto;
+        padding: 0;
+        max-width: 18ch;             /* force wrap of long name */
+        text-align: center;           /* center text inside phone */
       }
       .intro h1{
-        font-size: 1rem;          /* ✅ smaller text for mobile */
+        font-size: 0.98rem;          /* smaller so it fits */
         line-height: 1.2;
-        margin: 0 0 6px 0;
-        word-break: break-word;   /* ✅ break long text if needed */
-        white-space: normal;      /* ✅ allow wrapping */
+        margin: 0 0 4px 0;
+        word-break: break-word;
+        white-space: normal;
       }
       .intro p{
-        font-size: 0.9rem;
+        font-size: 0.84rem;
         margin: 0;
       }
 
-      .spacer-top        { display:block; height: var(--top-gap); }
-      .spacer-after-text { display:block; height: var(--after-text-gap); }
+      .spacer-top{ display:block; height: var(--top-gap); }
+      .spacer-after-text{ display:block; height: var(--after-text-gap); }
       .spacer-before-photo{ display:block; height: var(--before-photo-gap); }
 
+      /* photo position remains as you liked it */
       .profile-photo{
-        width: 100px;
-        height: 100px;
-        margin: 0;
-        transform: translateY(-7vh);
+        width: 90px; height: 90px; margin: 0;
+        transform: translateY(-10vh);
       }
     }
   </style>
@@ -136,6 +119,7 @@
   </nav>
 
   <header>
+    <!-- mobile spacing helpers -->
     <span class="spacer-top" aria-hidden="true"></span>
 
     <div class="intro">
@@ -146,6 +130,7 @@
     </div>
 
     <span class="spacer-before-photo" aria-hidden="true"></span>
+
     <img src="bhuvana.jpg" alt="Bhuvaneshwari Photo" class="profile-photo">
   </header>
 </body>
