@@ -71,59 +71,62 @@
       color: #1a4b7a; /* emphasis */
     }
 
-    /* Meta row: left (company) | right (location + date) */
+    /* Meta row */
     .exp-meta {
       display: flex;
-      justify-content: space-between;   /* pushes right group to the end */
+      justify-content: space-between;
       align-items: flex-start;
       gap: 12px;
-      margin-left: 28px; /* aligns with bullets if you add later */
-      margin-bottom: 4px;
+      margin-left: 28px;
+      margin-bottom: 8px;
       flex-wrap: wrap;
     }
-
     .meta-left, .meta-right { display: flex; gap: 16px; align-items: center; }
     .meta-left { flex: 1 1 auto; }
     .meta-right { flex: 0 0 auto; }
 
-    /* single meta line (icon + text) */
     .meta-line {
       display: inline-flex;
       align-items: center;
       gap: 6px;
       color: #444;
       font-size: 0.96rem;
-      white-space: nowrap;  /* avoid ugly breaks on desktop */
+      white-space: nowrap;
     }
     .meta-line img { width: 18px; height: 18px; }
 
-    /* Optional: small note style */
-    .note {
-      margin-left: 28px;
-      color: #555;
-      font-size: .95rem;
-      margin-top: 6px;
+    /* Bullet list with star */
+    ul {
+      list-style: none;
+      padding-left: 40px;
+      margin: 10px 0;
+    }
+    ul li {
+      margin-bottom: 6px;
+      position: relative;
+    }
+    ul li::before {
+      content: "⭐";
+      position: absolute;
+      left: -24px;
+      color: goldenrod;
     }
 
-    /* ===== Mobile tweaks ===== */
+    /* Mobile */
     @media (max-width: 700px) {
       main { margin: 20px 12px; padding: 16px; }
-
       .exp-meta {
-        flex-direction: column;         /* left on top, right below */
+        flex-direction: column;
         align-items: flex-start;
         gap: 6px;
       }
-      .meta-right {
-        gap: 10px;
-        flex-wrap: wrap;                /* allow wrap if very narrow */
-      }
+      .meta-right { gap: 10px; flex-wrap: wrap; }
       .meta-line { white-space: normal; }
     }
   </style>
 </head>
 <body>
-  <a href="index.html" class="back">← Back</a>
+  <a href="index.html" class="back"> Back</a>
 
   <main>
     <h1><img src="experience-icon.png" alt="Experience"> Experience</h1>
@@ -132,9 +135,8 @@
     <section class="exp-block">
       <div class="exp-header">
         <img src="role-icon.png" alt="Role">
-        <div class="role">Back-End Intern</div>
+        <div class="role">Back-End Intern – TrainME Fitness App</div>
       </div>
-
       <div class="exp-meta">
         <div class="meta-left">
           <span class="meta-line"><img src="office-icon.png" alt="Company"> Velocity Data Lab</span>
@@ -144,16 +146,21 @@
           <span class="meta-line"><img src="calendar-icon.png" alt="Date"> Feb 2024 – May 2024</span>
         </div>
       </div>
-      <!-- (Add bullet points later if you want) -->
+      <ul>
+        <li>Supported backend development for a fitness application by generating user test data in AWS console</li>
+        <li>Collaborated with front-end team to implement UI features when backend workload was low</li>
+        <li>Contributed to API testing and integration, ensuring smooth data flow between modules</li>
+        <li>Improved teamwork skills by adapting to shifting project needs and roles</li>
+        <li>Gained hands-on experience in cloud services (AWS) and collaborative agile development</li>
+      </ul>
     </section>
 
     <!-- ===== Swedcon18 AB ===== -->
     <section class="exp-block">
       <div class="exp-header">
         <img src="role-icon.png" alt="Role">
-        <div class="role">Front-End Intern</div>
+        <div class="role">Front-End Intern – Carelyo Medical Consultation App</div>
       </div>
-
       <div class="exp-meta">
         <div class="meta-left">
           <span class="meta-line"><img src="office-icon.png" alt="Company"> Swedcon18 AB</span>
@@ -163,6 +170,13 @@
           <span class="meta-line"><img src="calendar-icon.png" alt="Date"> Nov 2023 – Feb 2024</span>
         </div>
       </div>
+      <ul>
+        <li>Designed and implemented multiple UI screens for a medical consultation app using Next.js</li>
+        <li>Worked on CRUD operations with Swagger to manage patient data and records</li>
+        <li>Participated in structuring project architecture, improving scalability and readability</li>
+        <li>Collaborated in Agile sprints, contributing during planning and stand-ups</li>
+        <li>Strengthened practical skills in front-end development, API integration, and UI/UX design</li>
+      </ul>
     </section>
 
     <!-- ===== HI-TECH COMPANY Software Solution ===== -->
@@ -171,7 +185,6 @@
         <img src="role-icon.png" alt="Role">
         <div class="role">Full-Stack Developer</div>
       </div>
-
       <div class="exp-meta">
         <div class="meta-left">
           <span class="meta-line"><img src="office-icon.png" alt="Company"> HI-TECH COMPANY Software Solution</span>
@@ -181,6 +194,13 @@
           <span class="meta-line"><img src="calendar-icon.png" alt="Date"> Jun 2012 – Dec 2013</span>
         </div>
       </div>
+      <ul>
+        <li>Developed Java services to manage event bookings and cancellations reliably at scale</li>
+        <li>Enhanced user interaction by implementing dynamic features using JavaScript</li>
+        <li>Optimized MySQL database queries, reducing data retrieval and report generation time</li>
+        <li>Ensured data consistency by applying transaction management in backend services</li>
+        <li>Strengthened expertise in Java, JavaScript, and SQL, laying the foundation for later full-stack projects</li>
+      </ul>
     </section>
   </main>
 </body>
