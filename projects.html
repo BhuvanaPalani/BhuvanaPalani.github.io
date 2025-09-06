@@ -10,7 +10,7 @@
       font-family: system-ui, Arial, sans-serif;
       margin: 0;
       line-height: 1.6;
-      background: url('projects-bg.jpg') no-repeat center center fixed; /* ← your projects page background */
+      background: url('projects-bg.jpg') no-repeat center center fixed;
       background-size: cover;
       color: #222;
     }
@@ -91,6 +91,19 @@
       color:green; font-weight:700;
     }
 
+    /* GitHub link (fix icon size + alignment) */
+    .proj-link{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      margin-top:10px;
+      font-weight:600;
+      color:#1a4b7a;
+      text-decoration:none;
+    }
+    .proj-link:hover{ text-decoration:underline; }
+    .proj-link img{ width:16px; height:16px; }
+
     /* Subtle section break between groups, if needed */
     .grid{
       display:grid; gap:16px;
@@ -111,7 +124,7 @@
 
     <section class="grid">
 
-      <!-- 1️⃣ Currency Converter App -->
+      <!-- Currency Converter App -->
       <article class="proj-card">
         <div class="proj-header">
           <img src="app-icon.png" alt="App" class="app-ic">
@@ -127,12 +140,12 @@
           <li>Added input validation to ensure only numeric values are accepted.</li>
           <li>Tested functionality in Android Studio to verify conversion accuracy.</li>
         </ul>
-        <a href="https://github.com/BhuvanaPalani/currency-converter-app" class="proj-link" target="_blank">
-            <img src="link-icon.png" alt="Link"> View on GitHub
+        <a href="https://github.com/BhuvanaPalani/currency-converter-app" class="proj-link" target="_blank" rel="noopener">
+          <img src="link-icon.png" alt="Link"> View on GitHub
         </a>
       </article>
 
-      <!-- 2️⃣ Mortgage Calculator App -->
+      <!-- Mortgage Calculator App -->
       <article class="proj-card">
         <div class="proj-header">
           <img src="app-icon.png" alt="App" class="app-ic">
@@ -148,8 +161,8 @@
           <li>Ensured numeric-only fields using Android input types.</li>
           <li>Validated results across test scenarios for accuracy.</li>
         </ul>
-        <a href="https://github.com/BhuvanaPalani/mortgage-calculator-app" class="proj-link" target="_blank">
-            <img src="link-icon.png" alt="Link"> View on GitHub
+        <a href="https://github.com/BhuvanaPalani/mortgage-calculator-app" class="proj-link" target="_blank" rel="noopener">
+          <img src="link-icon.png" alt="Link"> View on GitHub
         </a>
       </article>
 
@@ -169,12 +182,12 @@
           <li>Implemented validation to allow only 0–20% tip.</li>
           <li>Tested various bill and tip combinations in Android Studio.</li>
         </ul>
-        <a href="https://github.com/BhuvanaPalani/tip-calculator-app" class="proj-link" target="_blank">
-            <img src="link-icon.png" alt="Link"> View on GitHub
+        <a href="https://github.com/BhuvanaPalani/tip-calculator-app" class="proj-link" target="_blank" rel="noopener">
+          <img src="link-icon.png" alt="Link"> View on GitHub
         </a>
       </article>
 
-      <!-- 4️⃣ Age Calculator App -->
+      <!-- Age Calculator App -->
       <article class="proj-card">
         <div class="proj-header">
           <img src="app-icon.png" alt="App" class="app-ic">
@@ -190,12 +203,12 @@
           <li>Validated inputs for correct year/month ranges.</li>
           <li>Tested multiple cases in Android Studio to ensure calculation correctness.</li>
         </ul>
-        <a href="https://github.com/BhuvanaPalani/age-calculator-app" class="proj-link" target="_blank">
-            <img src="link-icon.png" alt="Link"> View on GitHub
+        <a href="https://github.com/BhuvanaPalani/age-calculator-app" class="proj-link" target="_blank" rel="noopener">
+          <img src="link-icon.png" alt="Link"> View on GitHub
         </a>
       </article>
 
-      <!-- 5️⃣ Coffee Login App -->
+      <!-- Coffee Login App -->
       <article class="proj-card">
         <div class="proj-header">
           <img src="app-icon.png" alt="App" class="app-ic">
@@ -211,12 +224,12 @@
           <li>Applied Material Components for modern, accessible UI.</li>
           <li>Tested usability and collected peer feedback for improvements.</li>
         </ul>
-        <a href="https://github.com/BhuvanaPalani/coffee-login-app" class="proj-link" target="_blank">
-            <img src="link-icon.png" alt="Link"> View on GitHub
+        <a href="https://github.com/BhuvanaPalani/coffee-login-app" class="proj-link" target="_blank" rel="noopener">
+          <img src="link-icon.png" alt="Link"> View on GitHub
         </a>
       </article>
 
-      <!-- 6️⃣ BMI Calculator App -->
+      <!-- BMI Calculator App -->
       <article class="proj-card">
         <div class="proj-header">
           <img src="app-icon.png" alt="App" class="app-ic">
@@ -232,12 +245,12 @@
           <li>Enabled auto-update whenever inputs changed using listeners in Android Studio.</li>
           <li>Verified results with multiple test values.</li>
         </ul>
-        <a href="https://github.com/BhuvanaPalani/bmi-calculator-app" class="proj-link" target="_blank">
-            <img src="link-icon.png" alt="Link"> View on GitHub
+        <a href="https://github.com/BhuvanaPalani/bmi-calculator-app" class="proj-link" target="_blank" rel="noopener">
+          <img src="link-icon.png" alt="Link"> View on GitHub
         </a>
       </article>
 
-      <!-- 7️⃣ Temperature Converter App -->
+      <!-- Temperature Converter App -->
       <article class="proj-card">
         <div class="proj-header">
           <img src="app-icon.png" alt="App" class="app-ic">
@@ -253,12 +266,12 @@
           <li>Added numeric-only input validation.</li>
           <li>Conducted testing in Android Studio to check edge cases.</li>
         </ul>
-        <a href="https://github.com/BhuvanaPalani/temperature-converter-app" class="proj-link" target="_blank">
-            <img src="link-icon.png" alt="Link"> View on GitHub
+        <a href="https://github.com/BhuvanaPalani/temperature-converter-app" class="proj-link" target="_blank" rel="noopener">
+          <img src="link-icon.png" alt="Link"> View on GitHub
         </a>
       </article>
 
-      <!-- 8️⃣ Login Register App -->
+      <!-- Login Register App -->
       <article class="proj-card">
         <div class="proj-header">
           <img src="app-icon.png" alt="App" class="app-ic">
@@ -274,8 +287,8 @@
           <li>Designed a simple and user-friendly interface with Material Components.</li>
           <li>Tested multiple scenarios to ensure validation works correctly.</li>
         </ul>
-        <a href="https://github.com/BhuvanaPalani/login-register-app" class="proj-link" target="_blank">
-            <img src="link-icon.png" alt="Link"> View on GitHub
+        <a href="https://github.com/BhuvanaPalani/login-register-app" class="proj-link" target="_blank" rel="noopener">
+          <img src="link-icon.png" alt="Link"> View on GitHub
         </a>
       </article>
 
