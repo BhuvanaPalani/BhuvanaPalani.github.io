@@ -55,15 +55,28 @@
       padding-bottom: 6px;
       margin-top: 28px;
     }
-    ul {
+
+    /* ✅ Skills lists with green checkmarks */
+    .skills-list {
       list-style: none;
-      padding: 0;
-      margin: 0;
+      padding-left: 0;
     }
-    li { margin-bottom: 8px; }
-    li strong { color: #000; }
-    .interests {
-      margin-top: 28px;
+    .skills-list li::before {
+      content: "✔ ";
+      color: green;
+      font-weight: bold;
+      margin-right: 6px;
+    }
+
+    /* ✅ Interests lists with arrows */
+    .interests-list {
+      list-style: none;
+      padding-left: 0;
+    }
+    .interests-list li::before {
+      content: "➤ ";
+      color: #555;
+      margin-right: 6px;
     }
 
     @media(max-width:600px){
@@ -80,7 +93,7 @@
     </h1>
 
     <h2>Programming</h2>
-    <ul>
+    <ul class="skills-list">
       <li>Kotlin</li>
       <li>Java</li>
       <li>JavaScript</li>
@@ -90,26 +103,26 @@
     </ul>
 
     <h2>Frameworks & Libraries</h2>
-    <ul>
+    <ul class="skills-list">
       <li>Android SDK</li>
       <li>Spring Framework</li>
       <li>React</li>
     </ul>
 
-    <h2>Cloud </h2>
-    <ul>
+    <h2>Cloud</h2>
+    <ul class="skills-list">
       <li>AWS</li>
-   </ul>
+    </ul>
 
     <h2>Developer Tools</h2>
-    <ul>
+    <ul class="skills-list">
       <li>Git & GitHub</li>
       <li>IntelliJ IDEA, VS Code, Android Studio</li>
       <li>Postman</li>
     </ul>
 
     <h2>Design & Creative Tools</h2>
-    <ul>
+    <ul class="skills-list">
       <li>Figma</li>
       <li>Zeplin</li>
     </ul>
@@ -118,7 +131,7 @@
       <h1>
         <img src="hobbies-icon.png" alt="Interests Icon"> Interests
       </h1>
-      <ul>
+      <ul class="interests-list">
         <li><strong>Organizing & Interior Design:</strong> Enjoy organizing and making places look beautiful.</li>
         <li><strong>Cooking:</strong> Love experimenting with new dishes for my family.</li>
         <li><strong>Music:</strong> Enjoy listening to fast-beat energetic music.</li>
