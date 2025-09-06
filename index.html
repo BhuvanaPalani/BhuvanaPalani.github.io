@@ -5,116 +5,81 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Bhuvaneshwari | Developer Portfolio</title>
   <style>
-    body {
+    body{
       font-family: system-ui, Arial, sans-serif;
-      margin: 0;
-      line-height: 1.6;
-      background: url('android-bg.jpg') no-repeat center center fixed;
-      background-size: cover;
-      color: #222;
+      margin:0;
+      line-height:1.6;
+      background:url('android-bg.jpg') no-repeat center center fixed;
+      background-size:cover;
+      color:#222;
     }
 
     /* NAV */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: #fff;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    nav{
+      position:sticky; top:0; z-index:1000;
+      background:#fff; box-shadow:0 2px 6px rgba(0,0,0,.15);
     }
-    .nav-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 12px 16px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 12px 18px;
+    .nav-inner{
+      max-width:1100px; margin:0 auto; padding:12px 16px;
+      display:flex; flex-wrap:wrap; justify-content:center; gap:12px 18px;
     }
-    .nav-inner a {
-      text-decoration: none;
-      color: #222;
-      font-weight: 700;
-      padding: 6px 10px;
-      border-radius: 6px;
-      transition: background .3s, color .3s;
-      white-space: nowrap; /* keep each link in one line */
+    .nav-inner a{
+      text-decoration:none; color:#222; font-weight:700;
+      padding:6px 10px; border-radius:6px; white-space:nowrap;
+      transition:background .3s,color .3s;
     }
-    .nav-inner a:hover { background: #eaeaea; color: #000; }
+    .nav-inner a:hover{ background:#eaeaea; color:#000; }
 
-    /* HEADER (desktop / tablet) */
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 32px;
-      max-width: 1000px;
-      margin: 60px auto;
-      padding: 40px 16px;
+    /* DESKTOP HEADER */
+    header{
+      display:flex; justify-content:space-between; align-items:center; gap:32px;
+      max-width:1000px; margin:60px auto; padding:40px 16px;
+    }
+    .intro{ flex:1; padding-right:20px; margin-left:-100px; }
+    .intro h1{ margin:0 0 8px 0; font-size:2.3rem; font-weight:700; line-height:1.2; }
+    .intro p{ margin:0; font-size:1.2rem; }
+    .profile-photo{
+      width:180px; height:180px; border-radius:50%; border:3px solid #222; object-fit:cover;
     }
 
-    .intro {
-      flex: 1;
-      padding-right: 20px;
-      margin-left: -100px; /* keeps text left of phone on desktop */
-    }
-    .intro h1 {
-      margin: 0 0 8px 0;
-      font-size: 2.3rem;
-      font-weight: 700;
-      line-height: 1.2;
-    }
-    .intro p { margin: 0; font-size: 1.2rem; }
+    /* hidden by default; used only on phones */
+    .spacer-top,.spacer-between{ display:none; }
 
-    .profile-photo {
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      border: 3px solid #222;
-      object-fit: cover;
-    }
+    /* -------- MOBILE -------- */
+    @media (max-width:700px){
+      /* fixed backgrounds act weird on phones */
+      body{ background-attachment:scroll; background-position:center top; }
 
-    /* Spacers (hidden on desktop) */
-    .spacer-top, .spacer-between { display: none; }
+      .nav-inner{ padding:10px 12px; gap:8px 14px; }
+      .nav-inner a{ font-size:.98rem; padding:6px 8px; }
 
-    /* -------- Mobile layout -------- */
-    @media (max-width: 700px) {
-      /* Fixed backgrounds can behave oddly on phones */
-      body { background-attachment: scroll; background-position: center top; }
-
-      .nav-inner { padding: 10px 12px; gap: 8px 14px; }
-      .nav-inner a { font-size: 0.98rem; padding: 6px 8px; }
-
-      header {
-        flex-direction: column;      /* stack vertically */
-        align-items: center;
-        text-align: center;
-        margin: 24px 12px 40px;
-        padding: 0;
+      header{
+        flex-direction:column; align-items:center; text-align:center;
+        margin:24px 12px 40px; padding:0;
       }
-      .intro {
-        margin-left: 0;
-        padding-right: 0;
-        max-width: 22ch;            /* keep lines tidy on small screens */
+      .intro{
+        margin-left:0; padding-right:0; max-width:22ch;
       }
-      .intro h1 { font-size: 1.8rem; }
-      .intro p  { font-size: 1rem; }
+      .intro h1{ font-size:1.8rem; }
+      .intro p{ font-size:1rem; }
 
-      /* Make sure text sits above the Android area */
-      .spacer-top {
-        display: block;
-        height: 60px;               /* tweak 40–90 depending on your phone */
-      }
-      /* Keep photo clearly below the green Android */
-      .spacer-between {
-        display: block;
-        height: 180px;              /* tweak 150–220 if needed */
+      /* keep the text CLEAR OF the Android top area */
+      .spacer-top{
+        display:block; height:80px; /* was 60px */
       }
 
-      .profile-photo {
-        width: 150px;
-        height: 150px;
-        margin: 8px 0 0 0;
+      /* give extra gap under the subtitle so "Kotlin" never touches */
+      .intro .subtitle{
+        display:block; margin-bottom:24px; /* explicit safe space below text */
+      }
+
+      /* push the photo well BELOW the green Android */
+      .spacer-between{
+        display:block; height:240px; /* was 180px; increase if still close on your phone */
+      }
+
+      .profile-photo{
+        width:150px; height:150px; margin-top:6px;
       }
     }
   </style>
@@ -130,14 +95,16 @@
   </nav>
 
   <header>
+    <!-- pushes text down a bit on phones so it's above the phone bezel -->
     <div class="spacer-top" aria-hidden="true"></div>
 
     <div class="intro">
       <h1>Hi 👋,</h1>
       <h1>I'm Bhuvana Palaniappan</h1>
-      <p>Android Developer Intern — Kotlin</p>
+      <p class="subtitle">Android Developer Intern — Kotlin</p>
     </div>
 
+    <!-- keeps your photo under the green Android on phones -->
     <div class="spacer-between" aria-hidden="true"></div>
 
     <img src="bhuvana.jpg" alt="Bhuvaneshwari Photo" class="profile-photo">
