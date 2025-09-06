@@ -14,7 +14,7 @@
       color: #222;
     }
 
-    
+    /* NAV */
     nav {
       position: sticky;
       top: 0;
@@ -27,9 +27,9 @@
       margin: 0 auto;
       padding: 12px 16px;
       display: flex;
-      flex-wrap: wrap;              
+      flex-wrap: wrap;
       justify-content: center;
-      gap: 12px 18px;               
+      gap: 12px 18px;
     }
     .nav-inner a {
       text-decoration: none;
@@ -38,11 +38,11 @@
       padding: 6px 10px;
       border-radius: 6px;
       transition: background .3s, color .3s;
-      white-space: nowrap;          
+      white-space: nowrap; /* keep each link in one line */
     }
     .nav-inner a:hover { background: #eaeaea; color: #000; }
 
-    
+    /* HEADER (desktop / tablet) */
     header {
       display: flex;
       justify-content: space-between;
@@ -56,7 +56,7 @@
     .intro {
       flex: 1;
       padding-right: 20px;
-      margin-left: -100px; 
+      margin-left: -100px; /* keeps text left of phone on desktop */
     }
     .intro h1 {
       margin: 0 0 8px 0;
@@ -74,35 +74,41 @@
       object-fit: cover;
     }
 
-    
-    .spacer-mobile { display: none; }
+    /* Spacers (hidden on desktop) */
+    .spacer-top, .spacer-between { display: none; }
 
-    
+    /* -------- Mobile layout -------- */
     @media (max-width: 700px) {
-      
+      /* Fixed backgrounds can behave oddly on phones */
       body { background-attachment: scroll; background-position: center top; }
 
       .nav-inner { padding: 10px 12px; gap: 8px 14px; }
       .nav-inner a { font-size: 0.98rem; padding: 6px 8px; }
 
       header {
-        flex-direction: column;     
+        flex-direction: column;      /* stack vertically */
         align-items: center;
         text-align: center;
-        margin: 28px 12px 40px;
-        padding: 0;                 
+        margin: 24px 12px 40px;
+        padding: 0;
       }
       .intro {
-        margin-left: 0;             
+        margin-left: 0;
         padding-right: 0;
+        max-width: 22ch;            /* keep lines tidy on small screens */
       }
       .intro h1 { font-size: 1.8rem; }
       .intro p  { font-size: 1rem; }
 
-     
-      .spacer-mobile {
+      /* Make sure text sits above the Android area */
+      .spacer-top {
         display: block;
-        height: 180px;              
+        height: 60px;               /* tweak 40–90 depending on your phone */
+      }
+      /* Keep photo clearly below the green Android */
+      .spacer-between {
+        display: block;
+        height: 180px;              /* tweak 150–220 if needed */
       }
 
       .profile-photo {
@@ -124,14 +130,15 @@
   </nav>
 
   <header>
+    <div class="spacer-top" aria-hidden="true"></div>
+
     <div class="intro">
       <h1>Hi 👋,</h1>
       <h1>I'm Bhuvana Palaniappan</h1>
       <p>Android Developer Intern — Kotlin</p>
     </div>
 
-  
-    <div class="spacer-mobile" aria-hidden="true"></div>
+    <div class="spacer-between" aria-hidden="true"></div>
 
     <img src="bhuvana.jpg" alt="Bhuvaneshwari Photo" class="profile-photo">
   </header>
