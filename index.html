@@ -38,18 +38,18 @@
 
     header {
       display: flex;
-      justify-content: space-between;   /* photo stays on the right */
+      justify-content: space-between;
       align-items: center;
-      max-width: 1100px;
+      max-width: 900px;
       margin: 60px auto;
       padding: 40px 16px;
-      gap: 100px;                       /* safe gap to phone */
+      gap: 32px;
     }
 
     .intro {
-      margin-left: 40px;                /* text on the left (desktop) */
+      margin-left: 40px;
       text-align: left;
-      max-width: 420px;
+      max-width: 450px;
     }
     .intro h1 {
       margin: 0 0 8px 0;
@@ -70,15 +70,14 @@
       object-fit: cover;
     }
 
-    /* hide spacers on desktop */
     .spacer-top, .spacer-after-text, .spacer-before-photo { display: none; }
 
-    /* ========== MOBILE ONLY (≤700px) — centered text ========== */
+    /* ========== MOBILE ONLY (<=700px) ========== */
     @media (max-width:700px){
       :root{
-        --top-gap: 12vh;         /* push text lower */
-        --after-text-gap: 12vh;  /* gap under “Kotlin” */
-        --before-photo-gap: 2vh;
+        --top-gap: 12vh;
+        --after-text-gap: 9vh;
+        --before-photo-gap: 4vh;
       }
 
       body{
@@ -92,37 +91,38 @@
         flex-direction: column;
         align-items: center;
         text-align: center;
-        max-width: 340px;
-        margin: 0 auto 36px;
+        margin: 0 12px 36px;
         padding: 0;
+        max-width: none;
         gap: 0;
       }
 
       .intro{
-        margin: 0 auto;           /* center horizontally */
-        padding: 0;
-        max-width: 22ch;          /* keep lines tidy */
-        text-align: center;       /* ✅ center text inside phone */
+        margin-left: 0;
+        padding-right: 0;
+        max-width: 18ch;          /* ✅ force wrap for long name */
       }
       .intro h1{
-        font-size: 1rem;
+        font-size: 1rem;          /* ✅ smaller text for mobile */
         line-height: 1.2;
-        margin: 0 0 4px 0;
+        margin: 0 0 6px 0;
+        word-break: break-word;   /* ✅ break long text if needed */
+        white-space: normal;      /* ✅ allow wrapping */
       }
       .intro p{
-        font-size: 0.85rem;
+        font-size: 0.9rem;
         margin: 0;
       }
 
-      .spacer-top         { display:block; height: var(--top-gap); }
-      .spacer-after-text  { display:block; height: var(--after-text-gap); }
+      .spacer-top        { display:block; height: var(--top-gap); }
+      .spacer-after-text { display:block; height: var(--after-text-gap); }
       .spacer-before-photo{ display:block; height: var(--before-photo-gap); }
 
       .profile-photo{
-        width: 90px;
-        height: 90px;
+        width: 100px;
+        height: 100px;
         margin: 0;
-        transform: translateY(-10vh); /* keep photo perfect */
+        transform: translateY(-7vh);
       }
     }
   </style>
@@ -146,7 +146,6 @@
     </div>
 
     <span class="spacer-before-photo" aria-hidden="true"></span>
-
     <img src="bhuvana.jpg" alt="Bhuvaneshwari Photo" class="profile-photo">
   </header>
 </body>
