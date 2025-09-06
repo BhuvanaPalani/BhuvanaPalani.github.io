@@ -73,12 +73,12 @@
     /* hide spacers on desktop */
     .spacer-top, .spacer-after-text, .spacer-before-photo { display: none; }
 
-    /* ========== MOBILE ONLY (≤700px) — tweaked to fit fully inside phone ========== */
+    /* ========== MOBILE ONLY (≤700px) — text adjusted ========== */
     @media (max-width:700px){
       :root{
-        --top-gap: 8vh;          /* ⬆️ move text higher (away from Android) */
-        --after-text-gap: 12vh;  /* room between text and photo */
-        --before-photo-gap: 2vh; /* small extra gap before photo */
+        --top-gap: 10vh;         /* ⬆️ move text slightly lower from bezel */
+        --after-text-gap: 14vh;  /* ⬇️ more space below Kotlin */
+        --before-photo-gap: 2vh;
       }
 
       body{
@@ -89,12 +89,11 @@
       nav a { margin: 4px 6px; font-size: .95rem; padding: 6px 8px; }
 
       header{
-        /* Constrain the whole block to the phone’s inner width and center it */
         flex-direction: column;
         align-items: center;
         text-align: center;
-        max-width: 340px;               /* ≈ phone interior width */
-        margin: 0 auto 36px;            /* centered horizontally */
+        max-width: 340px;
+        margin: 0 auto 36px;
         padding: 0;
         gap: 0;
       }
@@ -102,29 +101,28 @@
       .intro{
         margin: 0;
         padding: 0;
-        max-width: 19ch;                /* narrow lines fit in the phone */
+        max-width: 19ch;
       }
       .intro h1{
-        font-size: 1.12rem;             /* smaller so it never overlaps the Android */
-        line-height: 1.16;
-        margin: 0 0 6px 0;
+        font-size: 1rem;        /* ⬇️ smaller so it doesn’t spill out */
+        line-height: 1.2;
+        margin: 0 0 4px 0;
       }
       .intro p{
-        font-size: 0.86rem;             /* smaller subtitle */
+        font-size: 0.8rem;      /* ⬇️ smaller subtitle */
         margin: 0;
       }
 
-      /* spacers position content vertically inside the phone */
       .spacer-top         { display:block; height: var(--top-gap); }
       .spacer-after-text  { display:block; height: var(--after-text-gap); }
       .spacer-before-photo{ display:block; height: var(--before-photo-gap); }
 
-      /* photo smaller and pulled up so it sits well above the bottom bezel */
+      /* ✅ Photo left untouched */
       .profile-photo{
         width: 90px;
         height: 90px;
         margin: 0;
-        transform: translateY(-10vh);   /* more negative = higher; try -9vh/-11vh if needed */
+        transform: translateY(-10vh);
       }
     }
   </style>
@@ -138,22 +136,17 @@
   </nav>
 
   <header>
-    <!-- Mobile: push heading down from the phone’s top bezel -->
     <span class="spacer-top" aria-hidden="true"></span>
 
     <div class="intro">
       <h1>Hi 👋</h1>
       <h1>I'm Bhuvana Palaniappan</h1>
       <p>Android Developer Intern — Kotlin</p>
-
-      <!-- Mobile: keep text clear of the Android -->
       <span class="spacer-after-text" aria-hidden="true"></span>
     </div>
 
-    <!-- Mobile: small gap before photo -->
     <span class="spacer-before-photo" aria-hidden="true"></span>
 
-    <!-- Photo stays on the right on desktop; on mobile it’s centered by the header width -->
     <img src="bhuvana.jpg" alt="Bhuvaneshwari Photo" class="profile-photo">
   </header>
 </body>
