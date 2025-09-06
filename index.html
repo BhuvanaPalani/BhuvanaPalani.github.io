@@ -47,9 +47,9 @@
     }
 
     .intro {
-      margin-left: 40px;                /* text on the left */
+      margin-left: 40px;                /* text on the left (desktop) */
       text-align: left;
-      max-width: 420px;                 /* wrap before phone */
+      max-width: 420px;
     }
     .intro h1 {
       margin: 0 0 8px 0;
@@ -73,16 +73,16 @@
     /* hide spacers on desktop */
     .spacer-top, .spacer-after-text, .spacer-before-photo { display: none; }
 
-    /* ========== MOBILE ONLY (≤700px) — text adjusted ========== */
+    /* ========== MOBILE ONLY (≤700px) — centered text ========== */
     @media (max-width:700px){
       :root{
-        --top-gap: 10vh;         /* ⬆️ move text slightly lower from bezel */
-        --after-text-gap: 14vh;  /* ⬇️ more space below Kotlin */
+        --top-gap: 12vh;         /* push text lower */
+        --after-text-gap: 12vh;  /* gap under “Kotlin” */
         --before-photo-gap: 2vh;
       }
 
       body{
-        background-attachment: scroll;   /* smoother on phones */
+        background-attachment: scroll;
         background-position: center top;
       }
 
@@ -99,17 +99,18 @@
       }
 
       .intro{
-        margin: 0;
+        margin: 0 auto;           /* center horizontally */
         padding: 0;
-        max-width: 19ch;
+        max-width: 22ch;          /* keep lines tidy */
+        text-align: center;       /* ✅ center text inside phone */
       }
       .intro h1{
-        font-size: 1rem;        /* ⬇️ smaller so it doesn’t spill out */
+        font-size: 1rem;
         line-height: 1.2;
         margin: 0 0 4px 0;
       }
       .intro p{
-        font-size: 0.8rem;      /* ⬇️ smaller subtitle */
+        font-size: 0.85rem;
         margin: 0;
       }
 
@@ -117,12 +118,11 @@
       .spacer-after-text  { display:block; height: var(--after-text-gap); }
       .spacer-before-photo{ display:block; height: var(--before-photo-gap); }
 
-      /* ✅ Photo left untouched */
       .profile-photo{
         width: 90px;
         height: 90px;
         margin: 0;
-        transform: translateY(-10vh);
+        transform: translateY(-10vh); /* keep photo perfect */
       }
     }
   </style>
