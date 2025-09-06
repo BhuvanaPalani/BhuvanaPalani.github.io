@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Bhuvaneshwari | Developer Portfolio</title>
   <style>
-    /* ===== BASE / DESKTOP ===== */
-    body{
+    /* ========== DESKTOP / DEFAULT ========== */
+    body {
       font-family: system-ui, Arial, sans-serif;
       margin: 0;
       line-height: 1.6;
@@ -15,7 +15,7 @@
       color: #222;
     }
 
-    nav{
+    nav {
       text-align: center;
       background: rgba(255,255,255,0.95);
       padding: 12px;
@@ -24,7 +24,7 @@
       z-index: 100;
       box-shadow: 0 2px 6px rgba(0,0,0,0.12);
     }
-    nav a{
+    nav a {
       margin: 0 10px;
       text-decoration: none;
       color: #222;
@@ -34,36 +34,36 @@
       transition: background .3s, color .3s;
       white-space: nowrap;
     }
-    nav a:hover{ background:#e0e0e0; color:#000; }
+    nav a:hover { background: #e0e0e0; color: #000; }
 
     header {
-  display: flex;
-  justify-content: flex-start; /* ✅ align items from left */
-  align-items: center;
-  max-width: 1100px;
-  margin: 60px auto;
-  padding: 40px 16px;
-  gap: 120px;   /* ✅ BIGGER gap between text and phone */
-}
+      display: flex;
+      justify-content: flex-start;  /* ✅ keep aligned left */
+      align-items: center;
+      max-width: 1100px;
+      margin: 60px auto;
+      padding: 40px 16px;
+      gap: 120px;   /* ✅ big gap between text and phone */
+    }
 
-.intro {
-  margin-left: 40px;     /* ✅ keeps text inset from left edge */
-  margin-right: 40px;    /* ✅ adds breathing room before phone */
-  text-align: left;
-  max-width: 420px;      /* ✅ forces text wrap, avoids overflow */
-}
-    .intro h1{
+    .intro {
+      margin-left: 40px;   /* ✅ pushes text away from screen edge */
+      margin-right: 40px;  /* ✅ ensures space before phone */
+      text-align: left;    
+      max-width: 420px;    /* ✅ keeps text wrapping neatly */
+    }
+    .intro h1 {
       margin: 0 0 8px 0;
-      font-size: 2rem;
-      line-height: 1.22;
+      font-size: 2.2rem;
+      line-height: 1.25;
       font-weight: 800;
     }
-    .intro p{
+    .intro p {
       margin: 0;
       font-size: 1.1rem;
     }
 
-    .profile-photo{
+    .profile-photo {
       width: 180px;
       height: 180px;
       border-radius: 50%;
@@ -71,29 +71,28 @@
       object-fit: cover;
     }
 
-    /* spacer elements exist in markup; hidden on desktop */
-    .spacer-top, .spacer-after-text, .spacer-before-photo{ display:none; }
+    /* Hide spacers on desktop */
+    .spacer-top, .spacer-after-text, .spacer-before-photo { display: none; }
 
-    /* ===== MOBILE (≤700px) ===== */
+    /* ========== MOBILE ONLY (<=700px) ========== */
     @media (max-width:700px){
-      /* adjust these if you need tiny nudges later */
       :root{
-        --top-gap: 12vh;         /* pushes “Hi 👋” down inside the phone */
-        --after-text-gap: 10vh;  /* gap under “Kotlin” */
-        --before-photo-gap: 4vh; /* small gap before photo block */
+        --top-gap: 12vh;       /* push “Hi 👋” down */
+        --after-text-gap: 9vh; /* gap under Kotlin */
+        --before-photo-gap: 4vh; /* gap before photo */
       }
 
       body{
-        background-attachment: scroll;   /* fixed can jitter on phones */
+        background-attachment: scroll;
         background-position: center top;
       }
 
-      nav a{ margin:4px 6px; font-size:.95rem; padding:6px 8px; }
+      nav a { margin: 4px 6px; font-size: .95rem; padding: 6px 8px; }
 
       header{
-        flex-direction: column;          /* stack vertically */
+        flex-direction: column;  
         align-items: center;
-        text-align: left;                /* keep text left on mobile too */
+        text-align: center;
         margin: 0 12px 36px;
         padding: 0;
         max-width: none;
@@ -101,32 +100,29 @@
       }
 
       .intro{
-        margin-left: 0;                  /* reset desktop shift */
-        padding-right: 0;
-        max-width: 21ch;                 /* tidy line length inside phone */
-        text-align: left;
+        margin: 0;
+        padding: 0;
+        max-width: 22ch;   /* narrow column for readability */
       }
       .intro h1{
-        font-size: 1.2rem;               /* smaller so it fully fits */
-        line-height: 1.18;
+        font-size: 1.4rem; 
+        line-height: 1.2;
         margin: 0 0 6px 0;
       }
       .intro p{
-        font-size: 0.9rem;               /* smaller subtitle */
+        font-size: 0.95rem;
         margin: 0;
       }
 
-      /* show spacers to control vertical placement relative to phone */
       .spacer-top        { display:block; height: var(--top-gap); }
       .spacer-after-text { display:block; height: var(--after-text-gap); }
       .spacer-before-photo{ display:block; height: var(--before-photo-gap); }
 
-      /* smaller photo and a little lower (not touching the doll) */
       .profile-photo{
         width: 100px;
         height: 100px;
         margin: 0;
-        transform: translateY(-4vh);     /* -7vh higher, -3vh lower; this sets “a bit lower” */
+        transform: translateY(-6vh); /* lift photo inside phone */
       }
     }
   </style>
@@ -140,7 +136,7 @@
   </nav>
 
   <header>
-    <!-- Mobile: push the heading down from the top bezel -->
+    <!-- Mobile-only: top spacer -->
     <span class="spacer-top" aria-hidden="true"></span>
 
     <div class="intro">
@@ -148,11 +144,11 @@
       <h1>I'm Bhuvana Palaniappan</h1>
       <p>Android Developer Intern — Kotlin</p>
 
-      <!-- Mobile: keep text clear of the Android -->
+      <!-- Mobile-only: spacer under text -->
       <span class="spacer-after-text" aria-hidden="true"></span>
     </div>
-
-    <!-- Mobile: tiny gap before showing the photo -->
+  
+    <!-- Mobile-only: spacer before photo -->
     <span class="spacer-before-photo" aria-hidden="true"></span>
 
     <img src="bhuvana.jpg" alt="Bhuvaneshwari Photo" class="profile-photo">
