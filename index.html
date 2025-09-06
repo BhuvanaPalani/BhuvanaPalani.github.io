@@ -5,117 +5,145 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Bhuvaneshwari | Developer Portfolio</title>
   <style>
-    :root{
-      --top-gap: 0vh;
-      --after-text-gap: 0vh;
-      --before-photo-gap: 0vh;
-    }
-
-    body{
+    body {
       font-family: system-ui, Arial, sans-serif;
-      margin:0;
-      line-height:1.6;
-      background:url('android-bg.jpg') no-repeat center center fixed;
-      background-size:cover;
-      color:#222;
+      margin: 0;
+      line-height: 1.6;
+      background: url('android-bg.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #222;
     }
 
-    /* NAV */
-    nav{
-      position:sticky; top:0; z-index:1000;
-      background:#fff; box-shadow:0 2px 6px rgba(0,0,0,.15);
+    nav {
+      text-align: center;
+      background: rgba(255,255,255,0.9);
+      padding: 12px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
-    .nav-inner{
-      max-width:1100px; margin:0 auto; padding:12px 16px;
-      display:flex; flex-wrap:wrap; justify-content:center; gap:12px 18px;
+    nav a {
+      margin: 0 10px;
+      text-decoration: none;
+      color: #222;
+      font-weight: bold;
+      transition: color 0.3s, background 0.3s;
+      padding: 6px 10px;
+      border-radius: 6px;
     }
-    .nav-inner a{
-      text-decoration:none; color:#222; font-weight:700;
-      padding:6px 10px; border-radius:6px; white-space:nowrap;
-      transition:background .3s,color .3s;
-    }
-    .nav-inner a:hover{ background:#eaeaea; color:#000; }
-
-    /* DESKTOP HEADER */
-    header{
-      display:flex; justify-content:space-between; align-items:center; gap:32px;
-      max-width:1000px; margin:60px auto; padding:40px 16px;
-    }
-    .intro{ flex:1; padding-right:20px; margin-left:-100px; }
-    .intro h1{ margin:0 0 8px 0; font-size:2.3rem; font-weight:700; line-height:1.2; }
-    .intro p{ margin:0; font-size:1.2rem; }
-    .profile-photo{
-      width:180px; height:180px; border-radius:50%; border:3px solid #222; object-fit:cover;
+    nav a:hover {
+      background: #e0e0e0;
+      color: #000;
     }
 
-    /* hidden by default; used only on phones */
-    .spacer-top,.spacer-after-text,.spacer-before-photo{ display:none; }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 900px;
+      margin: 60px auto;
+      padding: 40px;
+    }
+
+    .intro {
+      flex: 1;
+      padding-right: 20px;
+    }
+    .intro h1 {
+      margin-top: 0;
+      font-size: 2rem;
+    }
+    .intro p {
+      margin: 8px 0 0;
+      font-size: 1.1rem;
+    }
+
+    .profile-photo {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      border: 3px solid #222;
+      object-fit: cover;
+    }
 
     /* ---------- MOBILE LAYOUT ---------- */
     @media (max-width:700px){
       :root{
-        /* TUNE THESE THREE if needed */
-        --top-gap: 9vh;          /* push “Hi 👋” a bit lower */
-        --after-text-gap: 8vh;   /* room under “Kotlin” */
-        --before-photo-gap: 0vh; /* pull photo upward into screen */
+        --top-gap: 10vh;        /* push “Hi 👋” lower */
+        --after-text-gap: 7vh;  /* room under “Kotlin” */
+        --before-photo-gap: 2vh;/* small gap before photo */
       }
 
       body{
-        background-attachment:scroll;
-        background-position:center 6vh;  /* keeps phone nicely framed */
+        background-attachment: scroll;
+        background-position: center top;
       }
 
-      .nav-inner{ padding:10px 12px; gap:8px 14px; }
-      .nav-inner a{ font-size:.98rem; padding:6px 8px; }
-
-      header{
-        flex-direction:column; align-items:center; text-align:center;
-        margin:0 12px 36px; padding:0; max-width:none;
+      nav a {
+        display: inline-block;
+        margin: 4px 6px;
+        font-size: .95rem;
+        padding: 6px 8px;
       }
-      .intro{
-        margin-left:0; padding-right:0; max-width:22ch;
+
+      header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin: 0 12px 36px;
+        padding: 0;
+        max-width: none;
       }
-      .intro h1{ font-size:1.8rem; }
-      .intro p{ font-size:1rem; }
 
-      .spacer-top{ display:block; height:var(--top-gap); }
-      .spacer-after-text{ display:block; height:var(--after-text-gap); }
-      .spacer-before-photo{ display:block; height:var(--before-photo-gap); }
+      .intro {
+        margin-left: 0;
+        padding-right: 0;
+        max-width: 22ch;
+      }
 
-      .profile-photo{
-        width:128px; height:128px;
-        margin:0;
-        transform: translateY(-2vh); /* final nudge UP */
+      .intro h1 {
+        font-size: 1.6rem;
+        line-height: 1.2;
+        margin: 0 0 6px 0;
+      }
+
+      .intro p {
+        font-size: 1rem;
+        margin: 0;
+      }
+
+      /* spacers to control vertical placement */
+      .spacer-top { display:block; height: var(--top-gap); }
+      .spacer-after-text { display:block; height: var(--after-text-gap); }
+      .spacer-before-photo { display:block; height: var(--before-photo-gap); }
+
+      /* Photo placed inside the phone */
+      .profile-photo {
+        width: 120px;
+        height: 120px;
+        margin: 0;
+        transform: translateY(-8vh); /* adjust: -7vh / -9vh if needed */
       }
     }
   </style>
 </head>
 <body>
   <nav>
-    <div class="nav-inner">
-      <a href="profile.html">Profile</a>
-      <a href="projects.html">Projects</a>
-      <a href="skills.html">Skills and Interest</a>
-      <a href="contact.html">Contact</a>
-    </div>
+    <a href="profile.html">Profile</a>
+    <a href="projects.html">Projects</a>
+    <a href="skills.html">Skills And Interest</a>
+    <a href="contact.html">Contact</a>
   </nav>
 
   <header>
-    <!-- push heading block down a bit -->
-    <div class="spacer-top" aria-hidden="true"></div>
-
     <div class="intro">
-      <h1>Hi 👋,</h1>
+      <span class="spacer-top"></span>
+      <h1>Hi 👋</h1>
       <h1>I'm Bhuvana Palaniappan</h1>
-      <p class="subtitle">Android Developer Intern — Kotlin</p>
+      <p>Android Developer Intern — Kotlin</p>
+      <span class="spacer-after-text"></span>
     </div>
-
-    <!-- room below subtitle so “Kotlin” never touches the doll -->
-    <div class="spacer-after-text" aria-hidden="true"></div>
-
-    <!-- adjust placement of photo relative to the Android -->
-    <div class="spacer-before-photo" aria-hidden="true"></div>
-
+    <span class="spacer-before-photo"></span>
     <img src="bhuvana.jpg" alt="Bhuvaneshwari Photo" class="profile-photo">
   </header>
 </body>
