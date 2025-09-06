@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Experience | Bhuvana Portfolio</title>
+  <style>
+    /* ===== Page background & base ===== */
+    body {
+      font-family: system-ui, Arial, sans-serif;
+      margin: 0;
+      line-height: 1.6;
+      background: url('experience-bg.jpg') no-repeat center center fixed; /* your experience background */
+      background-size: cover;
+      color: #222;
+    }
+
+    /* Back */
+    .back {
+      display: inline-block;
+      margin: 20px;
+      text-decoration: none;
+      color: #222;
+      font-weight: bold;
+      font-size: 1.1rem;
+      padding: 6px 12px;
+      border-radius: 6px;
+      transition: background 0.3s;
+    }
+    .back:hover { background: #f2f2f2; }
+
+    /* Card wrapper */
+    main {
+      max-width: 850px;
+      margin: 40px auto;
+      padding: 24px;
+      background: rgba(255,255,255,0.93);
+      border-radius: 12px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+    }
+
+    /* Page title */
+    h1 {
+      text-align: center;
+      margin: 0 0 30px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+    }
+    h1 img { width: 30px; height: 30px; }
+
+    /* Each experience block */
+    .exp-block {
+      margin-bottom: 34px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    /* Role row */
+    .exp-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .exp-header img { width: 22px; height: 22px; }
+    .role {
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: #1a4b7a; /* emphasis */
+    }
+
+    /* Meta row: left (company) | right (location + date) */
+    .exp-meta {
+      display: flex;
+      justify-content: space-between;   /* pushes right group to the end */
+      align-items: flex-start;
+      gap: 12px;
+      margin-left: 28px; /* aligns with bullets if you add later */
+      margin-bottom: 4px;
+      flex-wrap: wrap;
+    }
+
+    .meta-left, .meta-right { display: flex; gap: 16px; align-items: center; }
+    .meta-left { flex: 1 1 auto; }
+    .meta-right { flex: 0 0 auto; }
+
+    /* single meta line (icon + text) */
+    .meta-line {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #444;
+      font-size: 0.96rem;
+      white-space: nowrap;  /* avoid ugly breaks on desktop */
+    }
+    .meta-line img { width: 18px; height: 18px; }
+
+    /* Optional: small note style */
+    .note {
+      margin-left: 28px;
+      color: #555;
+      font-size: .95rem;
+      margin-top: 6px;
+    }
+
+    /* ===== Mobile tweaks ===== */
+    @media (max-width: 700px) {
+      main { margin: 20px 12px; padding: 16px; }
+
+      .exp-meta {
+        flex-direction: column;         /* left on top, right below */
+        align-items: flex-start;
+        gap: 6px;
+      }
+      .meta-right {
+        gap: 10px;
+        flex-wrap: wrap;                /* allow wrap if very narrow */
+      }
+      .meta-line { white-space: normal; }
+    }
+  </style>
+</head>
+<body>
+  <a href="index.html" class="back">← Back</a>
+
+  <main>
+    <h1><img src="experience-icon.png" alt="Experience"> Experience</h1>
+
+    <!-- ===== Velocity Data Lab ===== -->
+    <section class="exp-block">
+      <div class="exp-header">
+        <img src="role-icon.png" alt="Role">
+        <div class="role">Back-End Intern</div>
+      </div>
+
+      <div class="exp-meta">
+        <div class="meta-left">
+          <span class="meta-line"><img src="office-icon.png" alt="Company"> Velocity Data Lab</span>
+        </div>
+        <div class="meta-right">
+          <span class="meta-line"><img src="remote-icon.png" alt="Location"> Remote</span>
+          <span class="meta-line"><img src="calendar-icon.png" alt="Date"> Feb 2024 – May 2024</span>
+        </div>
+      </div>
+      <!-- (Add bullet points later if you want) -->
+    </section>
+
+    <!-- ===== Swedcon18 AB ===== -->
+    <section class="exp-block">
+      <div class="exp-header">
+        <img src="role-icon.png" alt="Role">
+        <div class="role">Front-End Intern</div>
+      </div>
+
+      <div class="exp-meta">
+        <div class="meta-left">
+          <span class="meta-line"><img src="office-icon.png" alt="Company"> Swedcon18 AB</span>
+        </div>
+        <div class="meta-right">
+          <span class="meta-line"><img src="remote-icon.png" alt="Location"> Remote</span>
+          <span class="meta-line"><img src="calendar-icon.png" alt="Date"> Nov 2023 – Feb 2024</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== HI-TECH COMPANY Software Solution ===== -->
+    <section class="exp-block">
+      <div class="exp-header">
+        <img src="role-icon.png" alt="Role">
+        <div class="role">Full-Stack Developer</div>
+      </div>
+
+      <div class="exp-meta">
+        <div class="meta-left">
+          <span class="meta-line"><img src="office-icon.png" alt="Company"> HI-TECH COMPANY Software Solution</span>
+        </div>
+        <div class="meta-right">
+          <span class="meta-line"><img src="map-icon.png" alt="Location"> India</span>
+          <span class="meta-line"><img src="calendar-icon.png" alt="Date"> Jun 2012 – Dec 2013</span>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
