@@ -9,7 +9,7 @@
       font-family: system-ui, Arial, sans-serif;
       margin: 0;
       line-height: 1.6;
-      background: url('android-bg.jpg') no-repeat center 120px; /* was center center fixed */
+      background: url('android-bg.jpg') no-repeat center center fixed;
       background-size: cover;
       color: #222;
     }
@@ -17,11 +17,12 @@
     
     nav {
       text-align: center;
-      background: rgba(255,255,255,0.7);
-      padding: 12px;
+      background: #fff; 
+      padding: 16px;
       position: sticky;
       top: 0;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+      z-index: 1000;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15); 
     }
     nav a {
       margin: 0 10px;
@@ -40,7 +41,7 @@
     
     header {
       display: flex;
-      justify-content: flex-start; 
+      justify-content: flex-start;
       align-items: center;
       gap: 32px;
       max-width: 1000px;
@@ -102,8 +103,8 @@
 
   <header>
     <div class="intro">
-      <h1>Hi👋,</h1>
-      <h1>I'm Bhuvana Palaniappan </h1>
+      <h1>Hi 👋,</h1>
+      <h1>I'm Bhuvana Palaniappan</h1>
       <p>Android Developer Intern — Kotlin</p>
     </div>
     <img src="bhuvana.jpg" alt="Bhuvaneshwari Photo" class="profile-photo">
