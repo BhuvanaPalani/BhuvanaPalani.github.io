@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Skills & Interests | Bhuvana Portfolio</title>
+  <style>
+    body {
+      font-family: system-ui, Arial, sans-serif;
+      margin: 0;
+      line-height: 1.6;
+      background: url('skills-bg.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #222;
+    }
+
+    /* Back arrow */
+    .back {
+      display: inline-block;
+      margin: 20px;
+      text-decoration: none;
+      color: #222;
+      font-weight: bold;
+      font-size: 1.1rem;
+      padding: 6px 12px;
+      border-radius: 6px;
+      transition: background 0.3s;
+    }
+    .back:hover {
+      background: #f2f2f2;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 24px;
+      background: rgba(255,255,255,0.92);
+      border-radius: 12px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+    }
+    h1 {
+      text-align: center;
+      margin-top: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    h1 img {
+      width: 28px;
+      height: 28px;
+    }
+    h2 {
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 6px;
+      margin-top: 28px;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    li { margin-bottom: 8px; }
+    li strong { color: #000; }
+    .interests {
+      margin-top: 28px;
+    }
+
+    @media(max-width:600px){
+      main { margin: 20px 12px; padding: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <a href="index.html" class="back">Back</a>
+
+  <main>
+    <h1>
+      <img src="skills-icon.png" alt="Skills Icon"> Skills
+    </h1>
+
+    <h2>Programming</h2>
+    <ul>
+      <li>Kotlin</li>
+      <li>Java</li>
+      <li>JavaScript</li>
+      <li>TypeScript</li>
+      <li>SQL / MySQL</li>
+      <li>HTML & CSS</li>
+    </ul>
+
+    <h2>Frameworks & Libraries</h2>
+    <ul>
+      <li>Android SDK</li>
+      <li>Spring Framework</li>
+      <li>React</li>
+    </ul>
+
+    <h2>Cloud </h2>
+    <ul>
+      <li>AWS</li>
+   </ul>
+
+    <h2>Developer Tools</h2>
+    <ul>
+      <li>Git & GitHub</li>
+      <li>IntelliJ IDEA, VS Code, Android Studio</li>
+      <li>Postman</li>
+    </ul>
+
+    <h2>Design & Creative Tools</h2>
+    <ul>
+      <li>Figma</li>
+      <li>Zeplin</li>
+    </ul>
+
+    <div class="interests">
+      <h1>
+        <img src="interests-icon.png" alt="Interests Icon"> Interests
+      </h1>
+      <ul>
+        <li><strong>Organizing & Interior Design:</strong> Enjoy organizing and making places look beautiful.</li>
+        <li><strong>Cooking:</strong> Love experimenting with new dishes for my family.</li>
+        <li><strong>Music:</strong> Enjoy listening to fast-beat energetic music.</li>
+      </ul>
+    </div>
+  </main>
+</body>
+</html>
