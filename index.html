@@ -3,53 +3,66 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Bhuvana | Developer Portfolio</title>
+  <title>Bhuvaneshwari | Developer Portfolio</title>
   <style>
+    /* ========== DESKTOP / DEFAULT (unchanged) ========== */
     body {
       font-family: system-ui, Arial, sans-serif;
       margin: 0;
       line-height: 1.6;
       background: url('android-bg.jpg') no-repeat center center fixed;
       background-size: cover;
-      color: #222; 
+      color: #222;
     }
+
     nav {
       text-align: center;
-      background: rgba(255,255,255,0.7);
+      background: rgba(255,255,255,0.95);
       padding: 12px;
       position: sticky;
       top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.12);
     }
     nav a {
       margin: 0 10px;
       text-decoration: none;
       color: #222;
-      font-weight: bold;
-      transition: color 0.3s, background 0.3s;
+      font-weight: 700;
       padding: 6px 10px;
       border-radius: 6px;
+      transition: background .3s, color .3s;
+      white-space: nowrap;
     }
-    nav a:hover {
-      background: #e0e0e0;
-      color: #000;
-    }
+    nav a:hover { background: #e0e0e0; color: #000; }
+
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       max-width: 900px;
       margin: 60px auto;
-      padding: 40px;
+      padding: 40px 16px;
+      gap: 32px;
     }
+
     .intro {
       flex: 1;
       padding-right: 20px;
+      /* keep your desktop left position (don’t touch phone image) */
+      margin-left: -60px;
     }
     .intro h1 {
-      margin-top: 0;
+      margin: 0 0 8px 0;
       font-size: 2.2rem;
-      line-height: 1.3;
+      line-height: 1.25;
+      font-weight: 800;
     }
+    .intro p {
+      margin: 0;
+      font-size: 1.1rem;
+    }
+
     .profile-photo {
       width: 180px;
       height: 180px;
@@ -58,38 +71,62 @@
       object-fit: cover;
     }
 
-    /* Mobile view */
+    /* spacer elements exist in markup but are hidden on desktop */
+    .spacer-top, .spacer-after-text, .spacer-before-photo { display: none; }
+
+    /* ========== MOBILE ONLY CHANGES (<=700px) ========== */
     @media (max-width:700px){
+      :root{
+        /* adjust these if you need final tiny nudges on your phone */
+        --top-gap: 12vh;       /* pushes “Hi 👋” down inside the phone */
+        --after-text-gap: 9vh; /* gap under “Kotlin” so it never touches the Android */
+        --before-photo-gap: 4vh; /* small gap before photo block */
+      }
+
+      body{
+        /* fixed backgrounds can jitter on phones */
+        background-attachment: scroll;
+        background-position: center top;
+      }
+
+      nav a { margin: 4px 6px; font-size: .95rem; padding: 6px 8px; }
+
       header{
-        flex-direction: column;
+        flex-direction: column;     /* stack vertically on mobile */
         align-items: center;
         text-align: center;
         margin: 0 12px 36px;
         padding: 0;
         max-width: none;
+        gap: 0;
       }
 
       .intro{
+        margin-left: 0;             /* reset desktop shift */
         padding-right: 0;
-        max-width: 22ch;
-        margin-top: 10px;
+        max-width: 22ch;            /* keep lines tidy */
       }
       .intro h1{
-        font-size: 1.4rem;   /* smaller heading */
-        line-height: 1.3;
+        font-size: 1.4rem;          /* smaller so it doesn’t overlap the doll */
+        line-height: 1.2;
         margin: 0 0 6px 0;
       }
       .intro p{
         font-size: 0.95rem;
-        margin: 0 0 12px 0;
+        margin: 0;
       }
 
-      /* smaller profile photo, centered inside phone */
+      /* show mobile spacers that position content relative to the phone image */
+      .spacer-top        { display:block; height: var(--top-gap); }
+      .spacer-after-text { display:block; height: var(--after-text-gap); }
+      .spacer-before-photo{ display:block; height: var(--before-photo-gap); }
+
+      /* smaller photo, lifted and centered inside the screen area */
       .profile-photo{
         width: 110px;
         height: 110px;
-        margin-top: 14px;
-        transform: translateY(-12px); /* pull slightly up */
+        margin: 0;
+        transform: translateY(-6vh); /* raise photo; -5vh lower, -7vh higher */
       }
     }
   </style>
@@ -103,10 +140,21 @@
   </nav>
 
   <header>
+    <!-- Mobile-only: pushes the heading down so it doesn’t hit the top bezel -->
+    <span class="spacer-top" aria-hidden="true"></span>
+
     <div class="intro">
-      <h1>Hi 👋<br>I'm Bhuvana Palaniappan</h1>
+      <h1>Hi 👋</h1>
+      <h1>I'm Bhuvana Palaniappan</h1>
       <p>Android Developer Intern — Kotlin</p>
+
+      <!-- Mobile-only: gap under the subtitle so “Kotlin” never touches the Android -->
+      <span class="spacer-after-text" aria-hidden="true"></span>
     </div>
+
+    <!-- Mobile-only: small gap before showing the photo -->
+    <span class="spacer-before-photo" aria-hidden="true"></span>
+
     <img src="bhuvana.jpg" alt="Bhuvaneshwari Photo" class="profile-photo">
   </header>
 </body>
