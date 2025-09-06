@@ -11,8 +11,10 @@
       line-height: 1.6;
       background: url('android-bg.jpg') no-repeat center center fixed;
       background-size: cover;
-      color: #222; 
+      color: #222;
     }
+
+    
     nav {
       text-align: center;
       background: rgba(255,255,255,0.7);
@@ -27,35 +29,35 @@
       font-weight: bold;
       padding: 6px 12px;
       border-radius: 6px;
-      transition: background 0.3s, color 0.3s; 
+      transition: background 0.3s, color 0.3s;
     }
     nav a:hover {
-      background: #e0e0e0; 
-      color: #000;        
-    }
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 900px;
-      margin: 60px auto;
-      padding: 40px;
-    }
-    .intro {
-      flex: 1;
-      padding-right: 20px;
-      margin-left: -40px; 
-    }
-    .intro h1 {
-     margin-top: 0;
-     margin-bottom: 10px; 
-     font-size: 2.5rem; 
-     font-weight: 700;  
+      background: #e0e0e0;
+      color: #000;
     }
 
+    
+    header {
+      display: flex;
+      align-items: center;
+      gap: 32px;                 
+      width: min(1100px, 100%);
+      margin: 60px 5vw;          
+      padding: 0;                
+      justify-content: flex-start;
+    }
+
+    .intro {
+      flex: 0 1 560px;           
+    }
+    .intro h1 {
+      margin: 0 0 10px 0;        
+      font-size: 2.5rem;
+      font-weight: 700;
+    }
     .intro p {
-     font-size: 1.2rem;
-     margin-top: 0;       
+      margin: 0;                 
+      font-size: 1.2rem;
     }
 
     .profile-photo {
@@ -64,18 +66,18 @@
       border-radius: 50%;
       border: 3px solid #222;
       object-fit: cover;
+      flex: 0 0 180px;
     }
+
+    /* Mobile */
     @media (max-width: 700px) {
       header {
         flex-direction: column;
         text-align: center;
+        margin: 40px 16px;       
       }
       .intro {
-        padding-right: 0;
-        margin-left: 0; 
-      }
-      .profile-photo {
-        margin-top: 20px;
+        flex-basis: auto;
       }
     }
   </style>
