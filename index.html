@@ -49,21 +49,24 @@
       line-height: 1.25;
       font-weight: 800;
     }
-    .intro p{ margin: 0; font-size: 1.1rem; }
+    .intro p{ margin: 0; font-size: 1.1rem; } /* desktop subtitle stays */
 
     .profile-photo{
       width: 180px; height: 180px; border-radius: 50%;
       border: 3px solid #222; object-fit: cover;
     }
 
+    /* extra subtitle used only on mobile */
+    .subtitle-mobile{ display:none; }
+
     /* spacers used only on mobile */
     .spacer-top, .spacer-after-text, .spacer-before-photo{ display:none; }
 
-    /* ===== MOBILE ONLY (≤700px) — text centered & wrapped ===== */
+    /* ===== MOBILE ONLY (≤700px) ===== */
     @media (max-width:700px){
       :root{
-        --top-gap: 9vh;          /* start text a bit higher */
-        --after-text-gap: 13vh;  /* more room under “Kotlin” */
+        --top-gap: 9vh;
+        --after-text-gap: 13vh;
         --before-photo-gap: 2vh;
       }
 
@@ -87,15 +90,14 @@
         text-align: center;           /* center text inside phone */
       }
       .intro h1{
-        font-size: 0.98rem;          /* smaller so it fits */
+        font-size: 0.98rem;
         line-height: 1.2;
         margin: 0 0 4px 0;
         word-break: break-word;
         white-space: normal;
       }
       .intro p{
-        font-size: 0.84rem;
-        margin: 0;
+        display: none;                /* 🔒 hide subtitle inside phone on mobile */
       }
 
       .spacer-top{ display:block; height: var(--top-gap); }
@@ -106,6 +108,15 @@
       .profile-photo{
         width: 90px; height: 90px; margin: 0;
         transform: translateY(-10vh);
+      }
+
+      /* 🔽 show subtitle again *below the phone/photo* on mobile */
+      .subtitle-mobile{
+        display: block;
+        margin-top: 10px;            /* space below the phone edge */
+        font-size: 0.86rem;
+        color: #222;
+        text-align: center;
       }
     }
   </style>
@@ -125,13 +136,16 @@
     <div class="intro">
       <h1>Hi 👋</h1>
       <h1>I'm Bhuvana Palaniappan</h1>
-      <p>Android Developer Intern — Kotlin</p>
+      <p>Android Developer Intern — Kotlin</p> <!-- hidden on mobile -->
       <span class="spacer-after-text" aria-hidden="true"></span>
     </div>
 
     <span class="spacer-before-photo" aria-hidden="true"></span>
 
     <img src="bhuvana.jpg" alt="Bhuvaneshwari Photo" class="profile-photo">
+
+    <!-- visible only on mobile, placed *below* the phone/photo -->
+    <p class="subtitle-mobile">Android Developer Intern — Kotlin</p>
   </header>
 </body>
 </html>
