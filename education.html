@@ -53,6 +53,7 @@
       padding-bottom: 20px;
       border-bottom: 1px solid #ddd;
     }
+
     .edu-header {
       display: flex;
       align-items: center;
@@ -62,23 +63,42 @@
     .edu-header img { width: 22px; height: 22px; }
     .edu-title { font-weight: bold; font-size: 1.2rem; }
 
+    /* Meta row: left (university) | right (location + period) */
     .edu-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
       margin-left: 28px;
-      font-size: 0.95rem;
-      color: #444;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+      gap: 8px;
     }
-    .edu-meta div {
-      margin: 4px 0;
+
+    .meta-left,
+    .meta-right {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 16px;
     }
-    .edu-meta img {
+
+    .meta-line {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.95rem;
+      color: #444;
+      white-space: nowrap;
+    }
+    .meta-line img {
       width: 18px;
       height: 18px;
     }
 
-    ul { list-style: none; padding: 0; margin: 10px 0 0 28px; }
+    ul { 
+      list-style: none; 
+      padding: 0; 
+      margin: 10px 0 0 28px; 
+    }
     ul li::before {
       content: "✔ ";
       color: green;
@@ -88,6 +108,18 @@
 
     @media(max-width:600px){
       main { margin: 20px 12px; padding: 16px; }
+
+      /* On mobile, stack meta info */
+      .edu-meta {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .meta-right {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+      }
+      .meta-line { white-space: normal; }
     }
   </style>
 </head>
@@ -95,19 +127,22 @@
   <a href="index.html" class="back">← Back</a>
 
   <main>
-    <!-- Education page title with education icon -->
     <h1><img src="education-icon.png" alt="Education Icon"> Education</h1>
 
-    <!-- Lerum Vuxenutbildning -->
+    <!-- Lerum -->
     <div class="edu-block">
       <div class="edu-header">
         <img src="degree-icon.png" alt="Degree">
         <div class="edu-title">Android Developer</div>
       </div>
       <div class="edu-meta">
-        <div><img src="university-icon.png" alt="University"> Lerum Vuxenutbildning</div>
-        <div><img src="location-icon.png" alt="Location"> Göteborg</div>
-        <div><img src="calendar-icon.png" alt="Period"> 2025 – 2026 (Expected Jan 2026)</div>
+        <div class="meta-left">
+          <span class="meta-line"><img src="university-icon.png" alt="University"> Lerum Vuxenutbildning</span>
+        </div>
+        <div class="meta-right">
+          <span class="meta-line"><img src="location-icon.png" alt="Location"> Göteborg, Sweden</span>
+          <span class="meta-line"><img src="calendar-icon.png" alt="Period"> 2025 – 2026 (Expected Jan 2026)</span>
+        </div>
       </div>
       <ul>
         <li>Kotlin – Variables & Data Types</li>
@@ -119,16 +154,20 @@
       </ul>
     </div>
 
-    <!-- Jensen Yrkeshögskola -->
+    <!-- Jensen -->
     <div class="edu-block">
       <div class="edu-header">
         <img src="degree-icon.png" alt="Degree">
         <div class="edu-title">Cloud Developer AWS</div>
       </div>
       <div class="edu-meta">
-        <div><img src="university-icon.png" alt="University"> Jensen Yrkeshögskola</div>
-        <div><img src="location-icon.png" alt="Location"> Göteborg</div>
-        <div><img src="calendar-icon.png" alt="Period"> 2022 – 2024</div>
+        <div class="meta-left">
+          <span class="meta-line"><img src="university-icon.png" alt="University"> Jensen Yrkeshögskola</span>
+        </div>
+        <div class="meta-right">
+          <span class="meta-line"><img src="location-icon.png" alt="Location"> Göteborg, Sweden</span>
+          <span class="meta-line"><img src="calendar-icon.png" alt="Period"> 2022 – 2024</span>
+        </div>
       </div>
       <ul>
         <li>Administration & Security in a Cloud Environment</li>
@@ -139,16 +178,20 @@
       </ul>
     </div>
 
-    <!-- Kalasalingam University -->
+    <!-- Kalasalingam -->
     <div class="edu-block">
       <div class="edu-header">
         <img src="degree-icon.png" alt="Degree">
         <div class="edu-title">Bachelor of Technology in Electronics & Communication Engineering</div>
       </div>
       <div class="edu-meta">
-        <div><img src="university-icon.png" alt="University"> Kalasalingam University</div>
-        <div><img src="location-icon.png" alt="Location"> India</div>
-        <div><img src="calendar-icon.png" alt="Period"> 2008 – 2012</div>
+        <div class="meta-left">
+          <span class="meta-line"><img src="university-icon.png" alt="University"> Kalasalingam University</span>
+        </div>
+        <div class="meta-right">
+          <span class="meta-line"><img src="location-icon.png" alt="Location"> Tamil Nadu, India</span>
+          <span class="meta-line"><img src="calendar-icon.png" alt="Period"> 2008 – 2012</span>
+        </div>
       </div>
     </div>
   </main>
