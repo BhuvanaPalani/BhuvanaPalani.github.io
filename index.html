@@ -50,6 +50,10 @@
     .android-robot { display: none; }
 
     /* ===== MOBILE (≤700px) ===== */
+
+    .mobile-menu, .backdrop {
+  display: none;   /* hide dropdown and backdrop in desktop */
+}
     @media (max-width:700px){
       :root{
         --topbar-height: 54px;   /* height of nav for positioning dropdown */
@@ -113,6 +117,10 @@
         transition: opacity .25s ease;
         z-index: 998;
       }
+
+      .mobile-menu, .backdrop {
+    display: block;  /* allow them to work only on mobile */
+  }
 
       /* Hidden checkbox toggles everything */
       #menu-toggle:checked ~ .mobile-menu{
