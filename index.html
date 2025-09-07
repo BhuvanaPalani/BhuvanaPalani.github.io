@@ -62,13 +62,17 @@
     .subtitle-mobile{ display:none; }
     .spacer-top, .spacer-after-text, .spacer-before-photo{ display:none; }
 
-    /* ===== ANDROID ROBOT ===== */
-    .android-robot {
-      display: none; /* hidden on desktop */
-    }
+    /* Hidden on desktop */
+    .android-robot { display: none; }
 
     /* ===== MOBILE ONLY (≤700px) ===== */
     @media (max-width:700px){
+      :root{
+        /* tweak these two values if you want */
+        --robot-size: 56px;     /* 56–72px looks good */
+        --robot-top: 1.6rem;    /* vertical offset from top of intro */
+      }
+
       /* Mobile background */
       body{
         background: linear-gradient(to bottom, #E5D8C5, #f4d190);
@@ -112,6 +116,7 @@
       #menu-toggle:checked + nav .hamburger .bar:nth-child(3){ transform: translateY(-6px) rotate(-45deg); }
 
       header{
+        position: relative;        /* so absolute children can anchor here */
         flex-direction: column;
         align-items: center;
         text-align: center;
@@ -121,18 +126,14 @@
         gap: 0;
       }
 
-      /* put robot next to name */
+      /* intro centered; reserve room on the right for the robot */
       .intro{
         margin: 0 auto;
         padding: 0;
         max-width: 18ch;
         text-align: center;
-
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        gap: 8px; /* space between text and robot */
+        position: relative;
+        padding-right: calc(var(--robot-size) * 0.7); /* keeps text from colliding */
       }
       .intro h1{
         font-size: 0.98rem;
@@ -144,13 +145,14 @@
       .intro p{ display: none; }
 
       .spacer-top{ display:block; height: 9vh; }
-      .spacer-after-text{ display:none; } /* removed to keep alignment neat */
+      .spacer-after-text{ display:none; }
       .spacer-before-photo{ display:block; height: 2vh; }
 
       .profile-photo{
         width: 90px; height: 90px; margin: 0;
         transform: translateY(-6vh);
         border-color: #3DDC84; /* green border for mobile */
+        z-index: 1;
       }
 
       .subtitle-mobile{
@@ -162,11 +164,16 @@
         font-weight: bolder;
       }
 
-      /* Robot appears only in mobile inside intro */
-      .android-robot {
-        display: inline-block;
-        width: 28px;
+      /* Robot: bigger, to the right of the name, overlapping into photo area */
+      .android-robot{
+        display: block;
+        position: absolute;   /* positioned relative to .intro */
+        right: -8px;          /* push slightly outside intro for overlap */
+        top: var(--robot-top);
+        width: var(--robot-size);
         height: auto;
+        z-index: 2;           /* above text and photo edge */
+        filter: drop-shadow(0 2px 2px rgba(0,0,0,0.15));
       }
     }
   </style>
@@ -197,7 +204,7 @@
   <header>
     <span class="spacer-top" aria-hidden="true"></span>
 
-    <!-- Robot placed inside intro so it aligns with text -->
+    <!-- Robot stays with the intro so it sits to the right of the name -->
     <div class="intro">
       <div>
         <h1>Hi 👋</h1>
