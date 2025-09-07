@@ -22,7 +22,6 @@
       box-shadow: 0 2px 6px rgba(0,0,0,0.12);
     }
 
-    /* Wrap your links without changing desktop look */
     .nav-links { display: inline; }
 
     nav a{
@@ -39,7 +38,7 @@
       max-width: 1100px;
       margin: 60px auto;
       padding: 40px 16px;
-      gap: 100px;                        /* safe gap to phone */
+      gap: 100px;
     }
 
     .intro{
@@ -53,39 +52,32 @@
       line-height: 1.25;
       font-weight: 800;
     }
-    .intro p{ margin: 0; font-size: 1.1rem; font-weight: bold; } /* desktop subtitle stays */
+    .intro p{ margin: 0; font-size: 1.1rem; font-weight: bold; }
 
     .profile-photo{
       width: 180px; height: 180px; border-radius: 50%;
       border: 3px solid #222; object-fit: cover;
     }
 
-    /* extra subtitle used only on mobile */
     .subtitle-mobile{ display:none; }
-
-    /* spacers used only on mobile */
     .spacer-top, .spacer-after-text, .spacer-before-photo{ display:none; }
 
     /* ===== MOBILE ONLY (≤700px) ===== */
     @media (max-width:700px){
-      :root{
-        --top-gap: 9vh;
-        --after-text-gap: 13vh;
-        --before-photo-gap: 2vh;
+      body{ background-attachment: scroll; background-position: center top; }
+      nav{ 
+        display: flex;
+        justify-content: flex-start;   /* 👈 align hamburger to left */
+        align-items: center;
+        padding: 10px;
       }
 
-      body{ background-attachment: scroll; background-position: center top; }
-      nav a{ margin:4px 6px; font-size:.95rem; padding:6px 8px; }
-
-      /* ✅ Hamburger (shown only on mobile) */
       .hamburger {
         display: inline-block;
         cursor: pointer;
         padding: 6px 8px;
         border: 2px solid #222;
         border-radius: 6px;
-        margin-right: 10px;
-        vertical-align: middle;
         background: transparent;
       }
       .hamburger .bar{
@@ -93,19 +85,15 @@
         transition: transform .25s ease, opacity .25s ease;
       }
 
-      /* Hide links by default on mobile */
       .nav-links {
         display: none;
         width: 100%;
+        flex-direction: column;
+        text-align: center;
+        margin-top: 10px;
       }
 
-      /* When toggled, show links as a stacked list */
-      #menu-toggle:checked + nav .nav-links{
-        display: block;
-        margin-top: 8px;
-      }
-
-      /* Animate hamburger to X when open */
+      #menu-toggle:checked + nav .nav-links{ display: flex; }
       #menu-toggle:checked + nav .hamburger .bar:nth-child(1){ transform: translateY(6px) rotate(45deg); }
       #menu-toggle:checked + nav .hamburger .bar:nth-child(2){ opacity: 0; }
       #menu-toggle:checked + nav .hamburger .bar:nth-child(3){ transform: translateY(-6px) rotate(-45deg); }
@@ -114,7 +102,7 @@
         flex-direction: column;
         align-items: center;
         text-align: center;
-        max-width: 340px;            /* approx phone inner width */
+        max-width: 340px;
         margin: 0 auto 36px;
         padding: 0;
         gap: 0;
@@ -123,8 +111,8 @@
       .intro{
         margin: 0 auto;
         padding: 0;
-        max-width: 18ch;             /* force wrap of long name */
-        text-align: center;           /* center text inside phone */
+        max-width: 18ch;
+        text-align: center;
       }
       .intro h1{
         font-size: 0.98rem;
@@ -133,24 +121,20 @@
         word-break: break-word;
         white-space: normal;
       }
-      .intro p{
-        display: none;                /* 🔒 hide subtitle inside phone on mobile */
-      }
+      .intro p{ display: none; }
 
-      .spacer-top{ display:block; height: var(--top-gap); }
-      .spacer-after-text{ display:block; height: var(--after-text-gap); }
-      .spacer-before-photo{ display:block; height: var(--before-photo-gap); }
+      .spacer-top{ display:block; height: 9vh; }
+      .spacer-after-text{ display:block; height: 13vh; }
+      .spacer-before-photo{ display:block; height: 2vh; }
 
-      /* photo position remains as you liked it */
       .profile-photo{
         width: 90px; height: 90px; margin: 0;
         transform: translateY(-10vh);
       }
 
-      /* 🔽 show subtitle again *below the phone/photo* on mobile */
       .subtitle-mobile{
         display: block;
-        margin-top: 10px;            /* space below the phone edge */
+        margin-top: 10px;
         font-size: 1.1rem;
         color: #222;
         text-align: center;
@@ -171,7 +155,7 @@
       <span class="bar"></span>
     </label>
 
-    <!-- Your links (unchanged semantics; wrapped for mobile toggle) -->
+    <!-- Nav links -->
     <div class="nav-links">
       <a href="profile.html">Profile</a>
       <a href="education.html">Education</a>
@@ -183,7 +167,6 @@
   </nav>
 
   <header>
-    <!-- mobile spacing helpers -->
     <span class="spacer-top" aria-hidden="true"></span>
 
     <div class="intro">
@@ -197,7 +180,6 @@
 
     <img src="bhuvana.jpg" alt="Bhuvaneshwari Photo" class="profile-photo">
 
-    <!-- visible only on mobile, placed *below* the phone/photo -->
     <p class="subtitle-mobile">Android Developer Intern — Kotlin</p>
   </header>
 </body>
