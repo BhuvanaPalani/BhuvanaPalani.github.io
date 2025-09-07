@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Bhuvana | Developer Portfolio</title>
   <style>
-    /* ===== DESKTOP (unchanged) ===== */
+    /* ===== DESKTOP (default) ===== */
     body{
       font-family: system-ui, Arial, sans-serif;
       margin: 0;
@@ -14,175 +14,129 @@
       background-size: cover;
       color: #222;
     }
+
+    /* Top bar */
     nav{
-      text-align: center;
+      position: sticky; top: 0; z-index: 1000;
       background: #f4d190;
-      padding: 12px;
-      position: sticky; top: 0; z-index: 100;
       box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+      padding: 12px;
+      display: flex; align-items: center; justify-content: center;
     }
 
-    /* Desktop inline links */
-    .nav-inline { display: inline-block; }
+    /* Desktop links (visible on desktop only) */
+    .nav-inline { display: flex; gap: 12px; }
     .nav-inline a{
-      margin: 0 10px; text-decoration: none; color: #222;
+      text-decoration: none; color: #222;
       font-weight: 700; padding: 6px 10px; border-radius: 6px;
       transition: background .3s, color .3s; white-space: nowrap;
     }
     .nav-inline a:hover{ background:#e0e0e0; color:#000; }
 
+    /* Hamburger (hidden on desktop) */
+    .hamburger { display: none; }
+
     header{
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 1100px;
-      margin: 60px auto;
-      padding: 40px 16px;
-      gap: 100px;
+      display: flex; justify-content: space-between; align-items: center;
+      max-width: 1100px; margin: 60px auto; padding: 40px 16px; gap: 100px;
     }
-
-    .intro{
-      margin-left: 40px;
-      text-align: left;
-      max-width: 420px;
-    }
-    .intro h1{
-      margin: 0 0 8px 0;
-      font-size: 2.2rem;
-      line-height: 1.25;
-      font-weight: 800;
-    }
+    .intro{ margin-left: 40px; text-align: left; max-width: 420px; }
+    .intro h1{ margin: 0 0 8px 0; font-size: 2.2rem; line-height: 1.25; font-weight: 800; }
     .intro p{ margin: 0; font-size: 1.1rem; font-weight: bold; }
-
-    .profile-photo{
-      width: 180px; height: 180px; border-radius: 50%;
-      border: 3px solid #222; object-fit: cover;
-    }
+    .profile-photo{ width: 180px; height: 180px; border-radius: 50%; border: 3px solid #222; object-fit: cover; }
 
     .subtitle-mobile{ display:none; }
     .spacer-top, .spacer-after-text, .spacer-before-photo{ display:none; }
-
-    /* Robot hidden on desktop */
     .android-robot { display: none; }
 
-    /* ===== MOBILE ONLY (≤700px) ===== */
+    /* ===== MOBILE (≤700px) ===== */
     @media (max-width:700px){
       :root{
-        --robot-height: 88px;
-        --robot-top: 0.6rem;
-        --nudge-right: 6vw;
-        --drawer-width: 78vw;
+        --topbar-height: 54px;   /* height of nav for positioning dropdown */
+        --dropdown-pad: 10px;
       }
 
+      /* Smoother mobile background */
       html, body { min-height: 100vh; }
       body{
         background: linear-gradient(to bottom, #E5D8C5, #f4d190) no-repeat center top;
         background-size: cover;
         background-attachment: scroll;
-        color: #222;
       }
 
-      /* Top bar */
+      /* Nav becomes a compact top bar; center kept, but we’ll place hamburger absolute-left */
       nav{
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
         padding: 10px 12px;
-        position: sticky; top:0; z-index: 200; /* above header/content */
+        height: var(--topbar-height);
+        display: block; /* stack elements */
+        position: sticky; top: 0; z-index: 1000;
       }
 
-      /* Hide desktop links; show hamburger */
-      .nav-inline{ display:none; }
-      .hamburger {
-        display: inline-block;
-        cursor: pointer;
-        padding: 6px 8px;
-        border: 2px solid #222;
-        border-radius: 6px;
-        background: transparent;
+      /* Hamburger visible on mobile */
+      .hamburger{
+        display: inline-flex; align-items: center; justify-content: center;
+        cursor: pointer; padding: 6px 8px; border: 2px solid #222; border-radius: 6px;
+        background: transparent; position: absolute; left: 12px; top: 10px; z-index: 1001;
       }
       .hamburger .bar{
         display: block; width: 22px; height: 2px; background:#222; margin: 4px 0;
         transition: transform .25s ease, opacity .25s ease;
       }
 
-      /* Drawer overlay (does NOT push content) */
-      .drawer {
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 100vh;
-        width: var(--drawer-width);
-        max-width: 320px;
+      /* Hide desktop links on mobile */
+      .nav-inline{ display: none; }
+
+      /* The dropdown panel that POPS DOWN under the top bar */
+      .mobile-menu{
+        position: fixed; left: 0; right: 0; top: var(--topbar-height);
         background: #E5D8C5;
-        box-shadow: 2px 0 14px rgba(0,0,0,.2);
-        padding: 70px 16px 16px;   /* space for top bar */
-        transform: translateX(-100%); /* hidden by default */
-        transition: transform .3s ease;
-        z-index: 300; /* above everything */
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-      }
-      .drawer a{
-        text-decoration: none;
-        color: #222;
-        font-weight: 700;
-        padding: 10px 12px;
-        border-radius: 8px;
-        transition: background .25s;
-      }
-      .drawer a:hover{ background:#e9ddc9; }
-
-      /* Backdrop to dim content when drawer open */
-      .backdrop {
-        position: fixed;
-        inset: 0;
-        background: rgba(0,0,0,.25);
+        box-shadow: 0 8px 20px rgba(0,0,0,.22);
+        transform-origin: top;
+        transform: scaleY(0);
         opacity: 0;
-        pointer-events: none;
-        transition: opacity .3s ease;
-        z-index: 250;
+        transition: transform .25s ease, opacity .25s ease;
+        z-index: 999; /* below hamburger, above content */
+        padding: var(--dropdown-pad) 14px calc(var(--dropdown-pad) + 6px);
+        display: grid; gap: 8px;
+      }
+      .mobile-menu a{
+        text-decoration: none; color: #222; font-weight: 700;
+        padding: 10px 12px; border-radius: 8px; transition: background .2s;
+      }
+      .mobile-menu a:hover{ background:#e9ddc9; }
+
+      /* Backdrop while menu is open (doesn’t move layout) */
+      .backdrop {
+        position: fixed; inset: var(--topbar-height) 0 0 0; /* start below nav */
+        background: rgba(0,0,0,.25);
+        opacity: 0; pointer-events: none;
+        transition: opacity .25s ease;
+        z-index: 998;
       }
 
-      /* Checkbox toggle wiring */
-      #menu-toggle:checked ~ .backdrop{
+      /* Hidden checkbox toggles everything */
+      #menu-toggle:checked ~ .mobile-menu{
+        transform: scaleY(1);
         opacity: 1;
-        pointer-events: auto;
+      }
+      #menu-toggle:checked ~ .backdrop{
+        opacity: 1; pointer-events: auto;
       }
       #menu-toggle:checked ~ nav .hamburger .bar:nth-child(1){ transform: translateY(6px) rotate(45deg); }
       #menu-toggle:checked ~ nav .hamburger .bar:nth-child(2){ opacity: 0; }
       #menu-toggle:checked ~ nav .hamburger .bar:nth-child(3){ transform: translateY(-6px) rotate(-45deg); }
-      #menu-toggle:checked ~ .drawer{
-        transform: translateX(0); /* slide in */
-      }
 
+      /* Header/content: unchanged and NOT pushed by menu (menu is fixed) */
       header{
-        position: relative;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        max-width: 340px;
-        margin: 0 auto 36px;
-        padding: 0;
-        gap: 0;
+        position: relative; flex-direction: column; align-items: center; text-align: center;
+        max-width: 340px; margin: 0 auto 36px; padding: 0; gap: 0;
       }
 
-      /* Name block */
       .intro{
-        margin: 0 auto;
-        padding: 0;
-        max-width: 20ch;
-        text-align: center;
-        position: relative;
-        padding-right: 60px; /* keeps text clear from robot */
-        transform: translateX(var(--nudge-right));
+        margin: 0 auto; padding: 0; max-width: 20ch; text-align: center; position: relative;
+        padding-right: 60px;
       }
-      .intro h1{
-        font-size: 1.1rem;
-        line-height: 1.3;
-        margin: 0;
-      }
+      .intro h1{ font-size: 1.1rem; line-height: 1.3; margin: 0; }
       .intro > div { margin-bottom: 1rem; }
 
       .spacer-top{ display:block; height: 9vh; }
@@ -190,52 +144,49 @@
       .spacer-before-photo{ display:block; height: 2vh; }
 
       .profile-photo{
-        width: 90px; height: 90px;
-        margin: 0;
-        transform: none;
-        border-color: #3DDC84;
-        z-index: 1;
+        width: 90px; height: 90px; margin: 0; transform: none; border-color: #3DDC84; z-index: 1;
       }
 
       .subtitle-mobile{
-        display: block;
-        margin-top: 10px;
-        font-size: 1.1rem;
-        color: #3DDC84;
-        text-align: center;
-        font-weight: bolder;
+        display: block; margin-top: 10px; font-size: 1.1rem;
+        color: #3DDC84; text-align: center; font-weight: bolder;
       }
 
-      /* Android robot beside the name */
       .android-robot{
-        display: block;
-        position: absolute;   /* relative to .intro */
-        right: -10px;
-        top: var(--robot-top);
-        height: var(--robot-height);
-        width: auto;
-        z-index: 2;
+        display: block; position: absolute; right: -10px; top: .6rem;
+        height: 88px; width: auto; z-index: 2;
         filter: drop-shadow(0 2px 2px rgba(0,0,0,0.15));
       }
     }
   </style>
 </head>
 <body>
-  <!-- Hidden checkbox controls the mobile toggle -->
+  <!-- Hidden checkbox toggles the mobile dropdown -->
   <input id="menu-toggle" type="checkbox" aria-hidden="true" style="position:absolute;left:-9999px;" />
+
+  <!-- Mobile dropdown panel (fixed; overlays content) -->
+  <div class="mobile-menu">
+    <a href="profile.html" onclick="document.getElementById('menu-toggle').checked=false">Profile</a>
+    <a href="education.html" onclick="document.getElementById('menu-toggle').checked=false">Education</a>
+    <a href="experience.html" onclick="document.getElementById('menu-toggle').checked=false">Experience</a>
+    <a href="skills.html" onclick="document.getElementById('menu-toggle').checked=false">Skills And Interest</a>
+    <a href="projects.html" onclick="document.getElementById('menu-toggle').checked=false">Projects</a>
+    <a href="contact.html" onclick="document.getElementById('menu-toggle').checked=false">Contact</a>
+  </div>
 
   <!-- Backdrop (click to close) -->
   <label class="backdrop" for="menu-toggle" aria-hidden="true"></label>
 
+  <!-- Top bar -->
   <nav>
-    <!-- Hamburger button (mobile only) -->
+    <!-- Hamburger button (mobile only) stays visible even when open -->
     <label for="menu-toggle" class="hamburger" aria-label="Toggle menu">
       <span class="bar"></span>
       <span class="bar"></span>
       <span class="bar"></span>
     </label>
 
-    <!-- Desktop links (hidden on mobile) -->
+    <!-- Desktop inline nav -->
     <div class="nav-inline">
       <a href="profile.html">Profile</a>
       <a href="education.html">Education</a>
@@ -245,16 +196,6 @@
       <a href="contact.html">Contact</a>
     </div>
   </nav>
-
-  <!-- Mobile drawer (overlay; doesn’t push content) -->
-  <div class="drawer">
-    <a href="profile.html" onclick="document.getElementById('menu-toggle').checked=false">Profile</a>
-    <a href="education.html" onclick="document.getElementById('menu-toggle').checked=false">Education</a>
-    <a href="experience.html" onclick="document.getElementById('menu-toggle').checked=false">Experience</a>
-    <a href="skills.html" onclick="document.getElementById('menu-toggle').checked=false">Skills And Interest</a>
-    <a href="projects.html" onclick="document.getElementById('menu-toggle').checked=false">Projects</a>
-    <a href="contact.html" onclick="document.getElementById('menu-toggle').checked=false">Contact</a>
-  </div>
 
   <header>
     <span class="spacer-top" aria-hidden="true"></span>
@@ -270,7 +211,7 @@
 
     <span class="spacer-before-photo" aria-hidden="true"></span>
 
-    <!-- Photo stays exactly as-is -->
+    <!-- Photo -->
     <img src="bhuvana.jpg" alt="Bhuvaneshwari Photo" class="profile-photo">
 
     <p class="subtitle-mobile">Android Developer Intern — Kotlin</p>
