@@ -6,6 +6,7 @@
   <title>Bhuvana | Developer Portfolio</title>
   <style>
     /* ===== DESKTOP (default) ===== */
+    * { box-sizing: border-box; }
     body{
       font-family: system-ui, Arial, sans-serif;
       margin: 0;
@@ -15,7 +16,7 @@
       color: #222;
     }
 
-    /* Top bar */
+    /* Top bar (desktop) */
     nav{
       position: sticky; top: 0; z-index: 1000;
       background: #f4d190;
@@ -24,7 +25,7 @@
       display: flex; align-items: center; justify-content: center;
     }
 
-    /* Desktop links (visible on desktop only) */
+    /* Desktop links ONLY */
     .nav-inline { display: flex; gap: 12px; }
     .nav-inline a{
       text-decoration: none; color: #222;
@@ -33,7 +34,7 @@
     }
     .nav-inline a:hover{ background:#e0e0e0; color:#000; }
 
-    /* Hamburger (hidden on desktop) */
+    /* Hamburger hidden on desktop */
     .hamburger { display: none; }
 
     header{
@@ -49,18 +50,16 @@
     .spacer-top, .spacer-after-text, .spacer-before-photo{ display:none; }
     .android-robot { display: none; }
 
-    /* ===== MOBILE (≤700px) ===== */
+    /* Ensure mobile-only layer elements are hidden on desktop */
+    .mobile-menu, .backdrop { display: none; }
 
-    .mobile-menu, .backdrop {
-  display: none;   /* hide dropdown and backdrop in desktop */
-}
+    /* ===== MOBILE (≤700px) ===== */
     @media (max-width:700px){
       :root{
-        --topbar-height: 54px;   /* height of nav for positioning dropdown */
+        --topbar-height: 54px;   /* nav height for dropdown offset */
         --dropdown-pad: 10px;
       }
 
-      /* Smoother mobile background */
       html, body { min-height: 100vh; }
       body{
         background: linear-gradient(to bottom, #E5D8C5, #f4d190) no-repeat center top;
@@ -68,18 +67,19 @@
         background-attachment: scroll;
       }
 
-      /* Nav becomes a compact top bar; center kept, but we’ll place hamburger absolute-left */
+      /* Top bar switches to compact; hamburger on the left */
       nav{
         padding: 10px 12px;
         height: var(--topbar-height);
-        display: block; /* stack elements */
         position: sticky; top: 0; z-index: 1000;
+        display: block; /* so hamburger can be absolutely placed */
       }
 
-      /* Hamburger visible on mobile */
+      /* Classic 3-line hamburger */
       .hamburger{
         display: inline-flex; align-items: center; justify-content: center;
-        cursor: pointer; padding: 6px 8px; border: 2px solid #222; border-radius: 6px;
+        cursor: pointer; padding: 6px 8px;
+        border: 2px solid #222; border-radius: 6px;
         background: transparent; position: absolute; left: 12px; top: 10px; z-index: 1001;
       }
       .hamburger .bar{
@@ -87,10 +87,10 @@
         transition: transform .25s ease, opacity .25s ease;
       }
 
-      /* Hide desktop links on mobile */
+      /* Hide desktop inline links on mobile */
       .nav-inline{ display: none; }
 
-      /* The dropdown panel that POPS DOWN under the top bar */
+      /* Dropdown menu that POPS DOWN under the top bar */
       .mobile-menu{
         position: fixed; left: 0; right: 0; top: var(--topbar-height);
         background: #E5D8C5;
@@ -99,7 +99,7 @@
         transform: scaleY(0);
         opacity: 0;
         transition: transform .25s ease, opacity .25s ease;
-        z-index: 999; /* below hamburger, above content */
+        z-index: 999;
         padding: var(--dropdown-pad) 14px calc(var(--dropdown-pad) + 6px);
         display: grid; gap: 8px;
       }
@@ -109,18 +109,17 @@
       }
       .mobile-menu a:hover{ background:#e9ddc9; }
 
-      /* Backdrop while menu is open (doesn’t move layout) */
+      /* Dim the page while menu is open */
       .backdrop {
         position: fixed; inset: var(--topbar-height) 0 0 0; /* start below nav */
         background: rgba(0,0,0,.25);
         opacity: 0; pointer-events: none;
         transition: opacity .25s ease;
         z-index: 998;
+        display: block; /* mobile only */
       }
 
-      
-
-      /* Hidden checkbox toggles everything */
+      /* Toggle open/close via hidden checkbox */
       #menu-toggle:checked ~ .mobile-menu{
         transform: scaleY(1);
         opacity: 1;
@@ -132,7 +131,7 @@
       #menu-toggle:checked ~ nav .hamburger .bar:nth-child(2){ opacity: 0; }
       #menu-toggle:checked ~ nav .hamburger .bar:nth-child(3){ transform: translateY(-6px) rotate(-45deg); }
 
-      /* Header/content: unchanged and NOT pushed by menu (menu is fixed) */
+      /* Header/content stays put (menu overlays; no shrinking) */
       header{
         position: relative; flex-direction: column; align-items: center; text-align: center;
         max-width: 340px; margin: 0 auto 36px; padding: 0; gap: 0;
@@ -172,20 +171,20 @@
 
   <!-- Mobile dropdown panel (fixed; overlays content) -->
   <div class="mobile-menu">
-    <a href="profile.html" onclick="document.getElementById('menu-toggle').checked=false">Profile</a>
+    <a href="profile.html"   onclick="document.getElementById('menu-toggle').checked=false">Profile</a>
     <a href="education.html" onclick="document.getElementById('menu-toggle').checked=false">Education</a>
-    <a href="experience.html" onclick="document.getElementById('menu-toggle').checked=false">Experience</a>
-    <a href="skills.html" onclick="document.getElementById('menu-toggle').checked=false">Skills And Interest</a>
-    <a href="projects.html" onclick="document.getElementById('menu-toggle').checked=false">Projects</a>
-    <a href="contact.html" onclick="document.getElementById('menu-toggle').checked=false">Contact</a>
+    <a href="experience.html"onclick="document.getElementById('menu-toggle').checked=false">Experience</a>
+    <a href="skills.html"    onclick="document.getElementById('menu-toggle').checked=false">Skills And Interest</a>
+    <a href="projects.html"  onclick="document.getElementById('menu-toggle').checked=false">Projects</a>
+    <a href="contact.html"   onclick="document.getElementById('menu-toggle').checked=false">Contact</a>
   </div>
 
-  <!-- Backdrop (click to close) -->
+  <!-- Backdrop (tap to close) -->
   <label class="backdrop" for="menu-toggle" aria-hidden="true"></label>
 
   <!-- Top bar -->
   <nav>
-    <!-- Hamburger button (mobile only) stays visible even when open -->
+    <!-- Hamburger button (mobile only) -->
     <label for="menu-toggle" class="hamburger" aria-label="Toggle menu">
       <span class="bar"></span>
       <span class="bar"></span>
