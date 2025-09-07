@@ -33,7 +33,7 @@
 
     header{
       display: flex;
-      justify-content: space-between;   /* photo stays on right */
+      justify-content: space-between;
       align-items: center;
       max-width: 1100px;
       margin: 60px auto;
@@ -62,15 +62,14 @@
     .subtitle-mobile{ display:none; }
     .spacer-top, .spacer-after-text, .spacer-before-photo{ display:none; }
 
-    /* Hidden on desktop */
+    /* ===== ANDROID ROBOT (hidden on desktop) ===== */
     .android-robot { display: none; }
 
     /* ===== MOBILE ONLY (≤700px) ===== */
     @media (max-width:700px){
       :root{
-        /* tweak these two values if you want */
-        --robot-size: 56px;     /* 56–72px looks good */
-        --robot-top: 1.6rem;    /* vertical offset from top of intro */
+        --robot-size: 72px;   /* bigger robot */
+        --robot-top: 0.6rem;  /* vertical offset */
       }
 
       /* Mobile background */
@@ -116,7 +115,7 @@
       #menu-toggle:checked + nav .hamburger .bar:nth-child(3){ transform: translateY(-6px) rotate(-45deg); }
 
       header{
-        position: relative;        /* so absolute children can anchor here */
+        position: relative;
         flex-direction: column;
         align-items: center;
         text-align: center;
@@ -126,32 +125,28 @@
         gap: 0;
       }
 
-      /* intro centered; reserve room on the right for the robot */
       .intro{
         margin: 0 auto;
         padding: 0;
-        max-width: 18ch;
+        max-width: 20ch;
         text-align: center;
         position: relative;
-        padding-right: calc(var(--robot-size) * 0.7); /* keeps text from colliding */
+        padding-right: calc(var(--robot-size) * 0.7);
       }
-      .intro h1{
-        font-size: 0.98rem;
-        line-height: 1.2;
-        margin: 0;
-        word-break: break-word;
-        white-space: normal;
-      }
-      .intro p{ display: none; }
 
-      .spacer-top{ display:block; height: 9vh; }
-      .spacer-after-text{ display:none; }
-      .spacer-before-photo{ display:block; height: 2vh; }
+      .intro h1{
+        font-size: 1.1rem;
+        line-height: 1.3;
+        margin: 0;
+      }
+      /* add spacing below name to prevent overlap with photo */
+      .intro div { margin-bottom: 1rem; }
 
       .profile-photo{
-        width: 90px; height: 90px; margin: 0;
-        transform: translateY(-6vh);
-        border-color: #3DDC84; /* green border for mobile */
+        width: 90px; height: 90px;
+        margin: 0;
+        transform: none;  /* no upward shift */
+        border-color: #3DDC84;
         z-index: 1;
       }
 
@@ -164,15 +159,15 @@
         font-weight: bolder;
       }
 
-      /* Robot: bigger, to the right of the name, overlapping into photo area */
+      /* Robot appears larger, to the right of the name */
       .android-robot{
         display: block;
-        position: absolute;   /* positioned relative to .intro */
-        right: -8px;          /* push slightly outside intro for overlap */
+        position: absolute;
+        right: -12px;
         top: var(--robot-top);
         width: var(--robot-size);
         height: auto;
-        z-index: 2;           /* above text and photo edge */
+        z-index: 2;
         filter: drop-shadow(0 2px 2px rgba(0,0,0,0.15));
       }
     }
@@ -204,7 +199,7 @@
   <header>
     <span class="spacer-top" aria-hidden="true"></span>
 
-    <!-- Robot stays with the intro so it sits to the right of the name -->
+    <!-- Robot inside intro -->
     <div class="intro">
       <div>
         <h1>Hi 👋</h1>
