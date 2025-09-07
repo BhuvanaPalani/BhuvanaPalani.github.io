@@ -21,13 +21,15 @@
       position: sticky; top: 0; z-index: 100;
       box-shadow: 0 2px 6px rgba(0,0,0,0.12);
     }
-    .nav-links { display: inline; }
-    nav a{
+
+    /* Desktop inline links */
+    .nav-inline { display: inline-block; }
+    .nav-inline a{
       margin: 0 10px; text-decoration: none; color: #222;
       font-weight: 700; padding: 6px 10px; border-radius: 6px;
       transition: background .3s, color .3s; white-space: nowrap;
     }
-    nav a:hover{ background:#e0e0e0; color:#000; }
+    .nav-inline a:hover{ background:#e0e0e0; color:#000; }
 
     header{
       display: flex;
@@ -63,31 +65,34 @@
     /* Robot hidden on desktop */
     .android-robot { display: none; }
 
-
     /* ===== MOBILE ONLY (≤700px) ===== */
     @media (max-width:700px){
       :root{
-        --robot-height: 88px;  /* increase to 96px if you want even bigger */
-        --robot-top: 0.6rem;   /* vertical offset beside the name */
-        --nudge-right: 6vw;    /* how much the name block moves right */
+        --robot-height: 88px;
+        --robot-top: 0.6rem;
+        --nudge-right: 6vw;
+        --drawer-width: 78vw;
       }
 
-      /* Full-screen beige background on mobile */
       html, body { min-height: 100vh; }
       body{
         background: linear-gradient(to bottom, #E5D8C5, #f4d190) no-repeat center top;
         background-size: cover;
-        background-attachment: scroll; /* smoother on mobile */
+        background-attachment: scroll;
         color: #222;
       }
 
-      nav{ 
+      /* Top bar */
+      nav{
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        padding: 10px;
-        background: #E5D8C5;
+        padding: 10px 12px;
+        position: sticky; top:0; z-index: 200; /* above header/content */
       }
+
+      /* Hide desktop links; show hamburger */
+      .nav-inline{ display:none; }
       .hamburger {
         display: inline-block;
         cursor: pointer;
@@ -100,17 +105,57 @@
         display: block; width: 22px; height: 2px; background:#222; margin: 4px 0;
         transition: transform .25s ease, opacity .25s ease;
       }
-      .nav-links {
-        display: none;
-        width: 100%;
+
+      /* Drawer overlay (does NOT push content) */
+      .drawer {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: var(--drawer-width);
+        max-width: 320px;
+        background: #E5D8C5;
+        box-shadow: 2px 0 14px rgba(0,0,0,.2);
+        padding: 70px 16px 16px;   /* space for top bar */
+        transform: translateX(-100%); /* hidden by default */
+        transition: transform .3s ease;
+        z-index: 300; /* above everything */
+        display: flex;
         flex-direction: column;
-        text-align: center;
-        margin-top: 10px;
+        gap: 10px;
       }
-      #menu-toggle:checked + nav .nav-links{ display: flex; }
-      #menu-toggle:checked + nav .hamburger .bar:nth-child(1){ transform: translateY(6px) rotate(45deg); }
-      #menu-toggle:checked + nav .hamburger .bar:nth-child(2){ opacity: 0; }
-      #menu-toggle:checked + nav .hamburger .bar:nth-child(3){ transform: translateY(-6px) rotate(-45deg); }
+      .drawer a{
+        text-decoration: none;
+        color: #222;
+        font-weight: 700;
+        padding: 10px 12px;
+        border-radius: 8px;
+        transition: background .25s;
+      }
+      .drawer a:hover{ background:#e9ddc9; }
+
+      /* Backdrop to dim content when drawer open */
+      .backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,.25);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity .3s ease;
+        z-index: 250;
+      }
+
+      /* Checkbox toggle wiring */
+      #menu-toggle:checked ~ .backdrop{
+        opacity: 1;
+        pointer-events: auto;
+      }
+      #menu-toggle:checked ~ nav .hamburger .bar:nth-child(1){ transform: translateY(6px) rotate(45deg); }
+      #menu-toggle:checked ~ nav .hamburger .bar:nth-child(2){ opacity: 0; }
+      #menu-toggle:checked ~ nav .hamburger .bar:nth-child(3){ transform: translateY(-6px) rotate(-45deg); }
+      #menu-toggle:checked ~ .drawer{
+        transform: translateX(0); /* slide in */
+      }
 
       header{
         position: relative;
@@ -131,14 +176,13 @@
         text-align: center;
         position: relative;
         padding-right: 60px; /* keeps text clear from robot */
-        transform: translateX(var(--nudge-right)); /* nudge right toward center */
+        transform: translateX(var(--nudge-right));
       }
       .intro h1{
         font-size: 1.1rem;
         line-height: 1.3;
         margin: 0;
       }
-      /* spacing so photo won’t overlap the text */
       .intro > div { margin-bottom: 1rem; }
 
       .spacer-top{ display:block; height: 9vh; }
@@ -162,11 +206,11 @@
         font-weight: bolder;
       }
 
-      /* Bigger Android robot beside the name */
+      /* Android robot beside the name */
       .android-robot{
         display: block;
         position: absolute;   /* relative to .intro */
-        right: -10px;         /* slight outside overlap */
+        right: -10px;
         top: var(--robot-top);
         height: var(--robot-height);
         width: auto;
@@ -180,6 +224,9 @@
   <!-- Hidden checkbox controls the mobile toggle -->
   <input id="menu-toggle" type="checkbox" aria-hidden="true" style="position:absolute;left:-9999px;" />
 
+  <!-- Backdrop (click to close) -->
+  <label class="backdrop" for="menu-toggle" aria-hidden="true"></label>
+
   <nav>
     <!-- Hamburger button (mobile only) -->
     <label for="menu-toggle" class="hamburger" aria-label="Toggle menu">
@@ -188,8 +235,8 @@
       <span class="bar"></span>
     </label>
 
-    <!-- Nav links -->
-    <div class="nav-links">
+    <!-- Desktop links (hidden on mobile) -->
+    <div class="nav-inline">
       <a href="profile.html">Profile</a>
       <a href="education.html">Education</a>
       <a href="experience.html">Experience</a>
@@ -198,6 +245,16 @@
       <a href="contact.html">Contact</a>
     </div>
   </nav>
+
+  <!-- Mobile drawer (overlay; doesn’t push content) -->
+  <div class="drawer">
+    <a href="profile.html" onclick="document.getElementById('menu-toggle').checked=false">Profile</a>
+    <a href="education.html" onclick="document.getElementById('menu-toggle').checked=false">Education</a>
+    <a href="experience.html" onclick="document.getElementById('menu-toggle').checked=false">Experience</a>
+    <a href="skills.html" onclick="document.getElementById('menu-toggle').checked=false">Skills And Interest</a>
+    <a href="projects.html" onclick="document.getElementById('menu-toggle').checked=false">Projects</a>
+    <a href="contact.html" onclick="document.getElementById('menu-toggle').checked=false">Contact</a>
+  </div>
 
   <header>
     <span class="spacer-top" aria-hidden="true"></span>
@@ -209,8 +266,6 @@
         <h1>I'm Bhuvana Palaniappan</h1>
       </div>
       <img src="https://media.tenor.com/sfpwZzhd53QAAAAj/hello-android.gif" alt="Android Robot Animated" class="android-robot">
-
-
     </div>
 
     <span class="spacer-before-photo" aria-hidden="true"></span>
