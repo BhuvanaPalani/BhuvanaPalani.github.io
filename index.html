@@ -121,28 +121,35 @@
         gap: 0;
       }
 
+      /* put robot next to name */
       .intro{
         margin: 0 auto;
         padding: 0;
         max-width: 18ch;
         text-align: center;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 8px; /* space between text and robot */
       }
       .intro h1{
         font-size: 0.98rem;
         line-height: 1.2;
-        margin: 0 0 4px 0;
+        margin: 0;
         word-break: break-word;
         white-space: normal;
       }
       .intro p{ display: none; }
 
       .spacer-top{ display:block; height: 9vh; }
-      .spacer-after-text{ display:block; height: 13vh; }
+      .spacer-after-text{ display:none; } /* removed to keep alignment neat */
       .spacer-before-photo{ display:block; height: 2vh; }
 
       .profile-photo{
         width: 90px; height: 90px; margin: 0;
-        transform: translateY(-10vh);
+        transform: translateY(-6vh);
         border-color: #3DDC84; /* green border for mobile */
       }
 
@@ -155,16 +162,11 @@
         font-weight: bolder;
       }
 
-      /* Robot visible only on mobile, pinned bottom-right */
+      /* Robot appears only in mobile inside intro */
       .android-robot {
-        display: block;
-        position: fixed;
-        bottom: 10px;
-        right: 10px;
-        width: 60px;
+        display: inline-block;
+        width: 28px;
         height: auto;
-        opacity: 0.9;
-        z-index: 200;
       }
     }
   </style>
@@ -195,11 +197,13 @@
   <header>
     <span class="spacer-top" aria-hidden="true"></span>
 
+    <!-- Robot placed inside intro so it aligns with text -->
     <div class="intro">
-      <h1>Hi 👋</h1>
-      <h1>I'm Bhuvana Palaniappan</h1>
-      <p>Android Developer Intern — Kotlin</p> <!-- hidden on mobile -->
-      <span class="spacer-after-text" aria-hidden="true"></span>
+      <div>
+        <h1>Hi 👋</h1>
+        <h1>I'm Bhuvana Palaniappan</h1>
+      </div>
+      <img src="android-robot.png" alt="Android Robot" class="android-robot">
     </div>
 
     <span class="spacer-before-photo" aria-hidden="true"></span>
@@ -208,8 +212,5 @@
 
     <p class="subtitle-mobile">Android Developer Intern — Kotlin</p>
   </header>
-
-  <!-- Robot floats only in mobile view -->
-  <img src="android-robot.png" alt="Android Robot" class="android-robot">
 </body>
 </html>
