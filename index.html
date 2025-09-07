@@ -64,12 +64,12 @@
 
     /* ===== MOBILE ONLY (≤700px) ===== */
     @media (max-width:700px){
-      /* === New background for mobile === */
+      /* === New background for mobile (light beige gradient) === */
       body{
-        background: linear-gradient(to bottom, #121212, #1F1F1F); /* dark gradient */
+        background: linear-gradient(to bottom, #E5D8C5, #f4d190);
         background-attachment: scroll;
         background-position: center top;
-        color: #FAFAFA; /* improves text contrast on dark */
+        color: #222; /* text stays dark */
       }
 
       nav{ 
@@ -77,19 +77,19 @@
         justify-content: flex-start;
         align-items: center;
         padding: 10px;
-        background: #121212; /* match dark theme */
+        background: #E5D8C5; /* match beige */
       }
 
       .hamburger {
         display: inline-block;
         cursor: pointer;
         padding: 6px 8px;
-        border: 2px solid #FAFAFA;
+        border: 2px solid #222;
         border-radius: 6px;
         background: transparent;
       }
       .hamburger .bar{
-        display: block; width: 22px; height: 2px; background:#FAFAFA; margin: 4px 0;
+        display: block; width: 22px; height: 2px; background:#222; margin: 4px 0;
         transition: transform .25s ease, opacity .25s ease;
       }
 
@@ -150,14 +150,14 @@
         font-weight: bolder;
       }
 
-      /* Optional: little Android robot in corner */
+      /* Android robot fixed neatly bottom-right */
       .android-robot {
         position: fixed;
         bottom: 10px;
-        right: 10px;
-        width: 50px;
+        right: 10px;   /* controlled offset */
+        width: 60px;
         height: auto;
-        opacity: 0.8;
+        opacity: 0.9;
       }
     }
   </style>
@@ -202,7 +202,7 @@
     <p class="subtitle-mobile">Android Developer Intern — Kotlin</p>
   </header>
 
-  <!-- Optional Android robot on mobile -->
-  <img src="android-robot.png" alt="Android Robot" class="android-robot">
+  <!-- Android robot (shows bottom-right on mobile) -->
+  <img src="android_robot.png" alt="Android Robot" class="android-robot">
 </body>
 </html>
