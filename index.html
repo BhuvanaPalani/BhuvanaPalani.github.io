@@ -14,19 +14,53 @@
       background-size: cover;
       color: #222;
     }
+
+    /* Hidden checkbox to control mobile open/close */
+    #menu-toggle{ 
+      position: absolute; 
+      width: 1px; height: 1px; 
+      overflow: hidden; clip: rect(0 0 0 0);
+    }
+
     nav{
-      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
       background: #f4d190;
       padding: 12px;
       position: sticky; top: 0; z-index: 100;
       box-shadow: 0 2px 6px rgba(0,0,0,0.12);
     }
+
+    /* Inline nav links for desktop */
+    .nav-links{
+      display: inline-flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
     nav a{
       margin: 0 10px; text-decoration: none; color: #222;
       font-weight: 700; padding: 6px 10px; border-radius: 6px;
       transition: background .3s, color .3s; white-space: nowrap;
     }
     nav a:hover{ background:#e0e0e0; color:#000; }
+
+    /* Hamburger button (hidden on desktop) */
+    .hamburger{
+      display: none;
+      cursor: pointer;
+      padding: 8px 10px;
+      border-radius: 8px;
+      border: 2px solid #222;
+      line-height: 0;
+      user-select: none;
+    }
+    .hamburger .bar{
+      display: block; width: 22px; height: 2px; background:#222; margin: 4px 0;
+      transition: transform .25s ease, opacity .25s ease;
+    }
 
     header{
       display: flex;
@@ -71,15 +105,56 @@
       }
 
       body{ background-attachment: scroll; background-position: center top; }
-      nav a{ margin:4px 6px; font-size:.95rem; padding:6px 8px; }
+
+      /* Show hamburger, hide inline links */
+      .hamburger{ display: inline-block; position: absolute; left: 10px; }
+      .nav-links{ display: none; }
+
+      /* When open, animate hamburger to X */
+      #menu-toggle:checked + nav .hamburger .bar:nth-child(1){ transform: translateY(6px) rotate(45deg); }
+      #menu-toggle:checked + nav .hamburger .bar:nth-child(2){ opacity: 0; }
+      #menu-toggle:checked + nav .hamburger .bar:nth-child(3){ transform: translateY(-6px) rotate(-45deg); }
+
+      nav{
+        justify-content: center; /* title centered; hamburger sits left */
+      }
+
+      /* Collapsible panel that holds nav links + header on mobile */
+      .mobile-panel{
+        display: none;
+        background: rgba(244,209,144,0.95);
+        backdrop-filter: blur(2px);
+        border-bottom: 1px solid rgba(0,0,0,0.08);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      }
+      /* Open panel when toggled */
+      #menu-toggle:checked ~ .mobile-panel{ display: block; }
+
+      /* Nav links inside the panel (mobile view) */
+      .panel-links{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px 10px;
+        max-width: 360px;
+        margin: 12px auto 6px;
+        padding: 0 12px 8px;
+        text-align: center;
+      }
+      .panel-links a{
+        display: block;
+        text-decoration: none; color: #222;
+        font-weight: 700; padding: 8px 10px; border-radius: 8px;
+        background: #f7e2b9;
+        border: 1px solid rgba(0,0,0,0.08);
+      }
 
       header{
         flex-direction: column;
         align-items: center;
         text-align: center;
         max-width: 340px;            /* approx phone inner width */
-        margin: 0 auto 36px;
-        padding: 0;
+        margin: 0 auto 16px;
+        padding: 12px 0 16px;
         gap: 0;
       }
 
@@ -123,33 +198,57 @@
   </style>
 </head>
 <body>
+  <!-- Checkbox controls the mobile open/close -->
+  <input id="menu-toggle" type="checkbox" aria-hidden="true" />
+
   <nav>
-    <a href="profile.html">Profile</a>
-    <a href="education.html">Education</a>
-    <a href="experience.html">Experience</a>
-    <a href="skills.html">Skills And Interest</a>
-    <a href="projects.html">Projects</a>
-    <a href="contact.html">Contact</a>
-    
+    <!-- Hamburger (mobile only) -->
+    <label for="menu-toggle" class="hamburger" aria-label="Toggle menu" aria-controls="mobile-panel" aria-expanded="false">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </label>
+
+    <!-- Inline nav links (desktop only) -->
+    <div class="nav-links" aria-hidden="true">
+      <a href="profile.html">Profile</a>
+      <a href="education.html">Education</a>
+      <a href="experience.html">Experience</a>
+      <a href="skills.html">Skills And Interest</a>
+      <a href="projects.html">Projects</a>
+      <a href="contact.html">Contact</a>
+    </div>
   </nav>
 
-  <header>
-    <!-- mobile spacing helpers -->
-    <span class="spacer-top" aria-hidden="true"></span>
-
-    <div class="intro">
-      <h1>Hi 👋</h1>
-      <h1>I'm Bhuvana Palaniappan</h1>
-      <p>Android Developer Intern — Kotlin</p> <!-- hidden on mobile -->
-      <span class="spacer-after-text" aria-hidden="true"></span>
+  <!-- Collapsible panel shown ONLY on mobile when toggled -->
+  <div id="mobile-panel" class="mobile-panel">
+    <div class="panel-links">
+      <a href="profile.html">Profile</a>
+      <a href="education.html">Education</a>
+      <a href="experience.html">Experience</a>
+      <a href="skills.html">Skills &amp; Interest</a>
+      <a href="projects.html">Projects</a>
+      <a href="contact.html">Contact</a>
     </div>
 
-    <span class="spacer-before-photo" aria-hidden="true"></span>
+    <header>
+      <!-- mobile spacing helpers -->
+      <span class="spacer-top" aria-hidden="true"></span>
 
-    <img src="bhuvana.jpg" alt="Bhuvaneshwari Photo" class="profile-photo">
+      <div class="intro">
+        <h1>Hi 👋</h1>
+        <h1>I'm Bhuvana Palaniappan</h1>
+        <p>Android Developer Intern — Kotlin</p> <!-- hidden on mobile -->
+        <span class="spacer-after-text" aria-hidden="true"></span>
+      </div>
 
-    <!-- visible only on mobile, placed *below* the phone/photo -->
-    <p class="subtitle-mobile">Android Developer Intern — Kotlin</p>
-  </header>
+      <span class="spacer-before-photo" aria-hidden="true"></span>
+
+      <img src="bhuvana.jpg" alt="Bhuvaneshwari Photo" class="profile-photo">
+
+      <!-- visible only on mobile, placed *below* the phone/photo -->
+      <p class="subtitle-mobile">Android Developer Intern — Kotlin</p>
+    </header>
+  </div>
 </body>
 </html>
