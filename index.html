@@ -21,9 +21,7 @@
       position: sticky; top: 0; z-index: 100;
       box-shadow: 0 2px 6px rgba(0,0,0,0.12);
     }
-
     .nav-links { display: inline; }
-
     nav a{
       margin: 0 10px; text-decoration: none; color: #222;
       font-weight: 700; padding: 6px 10px; border-radius: 6px;
@@ -62,21 +60,24 @@
     .subtitle-mobile{ display:none; }
     .spacer-top, .spacer-after-text, .spacer-before-photo{ display:none; }
 
-    /* ===== ANDROID ROBOT (hidden on desktop) ===== */
+    /* Robot hidden on desktop */
     .android-robot { display: none; }
+
 
     /* ===== MOBILE ONLY (≤700px) ===== */
     @media (max-width:700px){
       :root{
-        --robot-size: 72px;   /* bigger robot */
-        --robot-top: 0.6rem;  /* vertical offset */
+        --robot-height: 88px;  /* increase to 96px if you want even bigger */
+        --robot-top: 0.6rem;   /* vertical offset beside the name */
+        --nudge-right: 6vw;    /* how much the name block moves right */
       }
 
-      /* Mobile background */
+      /* Full-screen beige background on mobile */
+      html, body { min-height: 100vh; }
       body{
-        background: linear-gradient(to bottom, #E5D8C5, #f4d190);
-        background-attachment: scroll;
-        background-position: center top;
+        background: linear-gradient(to bottom, #E5D8C5, #f4d190) no-repeat center top;
+        background-size: cover;
+        background-attachment: scroll; /* smoother on mobile */
         color: #222;
       }
 
@@ -87,7 +88,6 @@
         padding: 10px;
         background: #E5D8C5;
       }
-
       .hamburger {
         display: inline-block;
         cursor: pointer;
@@ -100,7 +100,6 @@
         display: block; width: 22px; height: 2px; background:#222; margin: 4px 0;
         transition: transform .25s ease, opacity .25s ease;
       }
-
       .nav-links {
         display: none;
         width: 100%;
@@ -108,7 +107,6 @@
         text-align: center;
         margin-top: 10px;
       }
-
       #menu-toggle:checked + nav .nav-links{ display: flex; }
       #menu-toggle:checked + nav .hamburger .bar:nth-child(1){ transform: translateY(6px) rotate(45deg); }
       #menu-toggle:checked + nav .hamburger .bar:nth-child(2){ opacity: 0; }
@@ -125,27 +123,32 @@
         gap: 0;
       }
 
+      /* Name block */
       .intro{
         margin: 0 auto;
         padding: 0;
         max-width: 20ch;
         text-align: center;
         position: relative;
-        padding-right: calc(var(--robot-size) * 0.7);
+        padding-right: 60px; /* keeps text clear from robot */
+        transform: translateX(var(--nudge-right)); /* nudge right toward center */
       }
-
       .intro h1{
         font-size: 1.1rem;
         line-height: 1.3;
         margin: 0;
       }
-      /* add spacing below name to prevent overlap with photo */
-      .intro div { margin-bottom: 1rem; }
+      /* spacing so photo won’t overlap the text */
+      .intro > div { margin-bottom: 1rem; }
+
+      .spacer-top{ display:block; height: 9vh; }
+      .spacer-after-text{ display:none; }
+      .spacer-before-photo{ display:block; height: 2vh; }
 
       .profile-photo{
         width: 90px; height: 90px;
         margin: 0;
-        transform: none;  /* no upward shift */
+        transform: none;
         border-color: #3DDC84;
         z-index: 1;
       }
@@ -159,14 +162,14 @@
         font-weight: bolder;
       }
 
-      /* Robot appears larger, to the right of the name */
+      /* Bigger Android robot beside the name */
       .android-robot{
         display: block;
-        position: absolute;
-        right: -12px;
+        position: absolute;   /* relative to .intro */
+        right: -10px;         /* slight outside overlap */
         top: var(--robot-top);
-        width: var(--robot-size);
-        height: auto;
+        height: var(--robot-height);
+        width: auto;
         z-index: 2;
         filter: drop-shadow(0 2px 2px rgba(0,0,0,0.15));
       }
@@ -199,7 +202,7 @@
   <header>
     <span class="spacer-top" aria-hidden="true"></span>
 
-    <!-- Robot inside intro -->
+    <!-- Name + robot -->
     <div class="intro">
       <div>
         <h1>Hi 👋</h1>
@@ -210,6 +213,229 @@
 
     <span class="spacer-before-photo" aria-hidden="true"></span>
 
+    <!-- Photo stays exactly as-is -->
+    <img src="bhuvana.jpg" alt="Bhuvaneshwari Photo" class="profile-photo">
+
+    <p class="subtitle-mobile">Android Developer Intern — Kotlin</p>
+  </header>
+</body>
+</html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bhuvana | Developer Portfolio</title>
+  <style>
+    /* ===== DESKTOP (unchanged) ===== */
+    body{
+      font-family: system-ui, Arial, sans-serif;
+      margin: 0;
+      line-height: 1.6;
+      background: #f4d190 url('android-bg.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #222;
+    }
+    nav{
+      text-align: center;
+      background: #f4d190;
+      padding: 12px;
+      position: sticky; top: 0; z-index: 100;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+    }
+    .nav-links { display: inline; }
+    nav a{
+      margin: 0 10px; text-decoration: none; color: #222;
+      font-weight: 700; padding: 6px 10px; border-radius: 6px;
+      transition: background .3s, color .3s; white-space: nowrap;
+    }
+    nav a:hover{ background:#e0e0e0; color:#000; }
+
+    header{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1100px;
+      margin: 60px auto;
+      padding: 40px 16px;
+      gap: 100px;
+    }
+
+    .intro{
+      margin-left: 40px;
+      text-align: left;
+      max-width: 420px;
+    }
+    .intro h1{
+      margin: 0 0 8px 0;
+      font-size: 2.2rem;
+      line-height: 1.25;
+      font-weight: 800;
+    }
+    .intro p{ margin: 0; font-size: 1.1rem; font-weight: bold; }
+
+    .profile-photo{
+      width: 180px; height: 180px; border-radius: 50%;
+      border: 3px solid #222; object-fit: cover;
+    }
+
+    .subtitle-mobile{ display:none; }
+    .spacer-top, .spacer-after-text, .spacer-before-photo{ display:none; }
+
+    /* Robot hidden on desktop */
+    .android-robot { display: none; }
+
+
+    /* ===== MOBILE ONLY (≤700px) ===== */
+    @media (max-width:700px){
+      :root{
+        --robot-height: 88px;  /* increase to 96px if you want even bigger */
+        --robot-top: 0.6rem;   /* vertical offset beside the name */
+        --nudge-right: 6vw;    /* how much the name block moves right */
+      }
+
+      /* Full-screen beige background on mobile */
+      html, body { min-height: 100vh; }
+      body{
+        background: linear-gradient(to bottom, #E5D8C5, #f4d190) no-repeat center top;
+        background-size: cover;
+        background-attachment: scroll; /* smoother on mobile */
+        color: #222;
+      }
+
+      nav{ 
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 10px;
+        background: #E5D8C5;
+      }
+      .hamburger {
+        display: inline-block;
+        cursor: pointer;
+        padding: 6px 8px;
+        border: 2px solid #222;
+        border-radius: 6px;
+        background: transparent;
+      }
+      .hamburger .bar{
+        display: block; width: 22px; height: 2px; background:#222; margin: 4px 0;
+        transition: transform .25s ease, opacity .25s ease;
+      }
+      .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        text-align: center;
+        margin-top: 10px;
+      }
+      #menu-toggle:checked + nav .nav-links{ display: flex; }
+      #menu-toggle:checked + nav .hamburger .bar:nth-child(1){ transform: translateY(6px) rotate(45deg); }
+      #menu-toggle:checked + nav .hamburger .bar:nth-child(2){ opacity: 0; }
+      #menu-toggle:checked + nav .hamburger .bar:nth-child(3){ transform: translateY(-6px) rotate(-45deg); }
+
+      header{
+        position: relative;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        max-width: 340px;
+        margin: 0 auto 36px;
+        padding: 0;
+        gap: 0;
+      }
+
+      /* Name block */
+      .intro{
+        margin: 0 auto;
+        padding: 0;
+        max-width: 20ch;
+        text-align: center;
+        position: relative;
+        padding-right: 60px; /* keeps text clear from robot */
+        transform: translateX(var(--nudge-right)); /* nudge right toward center */
+      }
+      .intro h1{
+        font-size: 1.1rem;
+        line-height: 1.3;
+        margin: 0;
+      }
+      /* spacing so photo won’t overlap the text */
+      .intro > div { margin-bottom: 1rem; }
+
+      .spacer-top{ display:block; height: 9vh; }
+      .spacer-after-text{ display:none; }
+      .spacer-before-photo{ display:block; height: 2vh; }
+
+      .profile-photo{
+        width: 90px; height: 90px;
+        margin: 0;
+        transform: none;
+        border-color: #3DDC84;
+        z-index: 1;
+      }
+
+      .subtitle-mobile{
+        display: block;
+        margin-top: 10px;
+        font-size: 1.1rem;
+        color: #3DDC84;
+        text-align: center;
+        font-weight: bolder;
+      }
+
+      /* Bigger Android robot beside the name */
+      .android-robot{
+        display: block;
+        position: absolute;   /* relative to .intro */
+        right: -10px;         /* slight outside overlap */
+        top: var(--robot-top);
+        height: var(--robot-height);
+        width: auto;
+        z-index: 2;
+        filter: drop-shadow(0 2px 2px rgba(0,0,0,0.15));
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Hidden checkbox controls the mobile toggle -->
+  <input id="menu-toggle" type="checkbox" aria-hidden="true" style="position:absolute;left:-9999px;" />
+
+  <nav>
+    <!-- Hamburger button (mobile only) -->
+    <label for="menu-toggle" class="hamburger" aria-label="Toggle menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </label>
+
+    <!-- Nav links -->
+    <div class="nav-links">
+      <a href="profile.html">Profile</a>
+      <a href="education.html">Education</a>
+      <a href="experience.html">Experience</a>
+      <a href="skills.html">Skills And Interest</a>
+      <a href="projects.html">Projects</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <header>
+    <span class="spacer-top" aria-hidden="true"></span>
+
+    <!-- Name + robot -->
+    <div class="intro">
+      <div>
+        <h1>Hi 👋</h1>
+        <h1>I'm Bhuvana Palaniappan</h1>
+      </div>
+      <img src="android_robot.png" alt="Android Robot" class="android-robot">
+    </div>
+
+    <span class="spacer-before-photo" aria-hidden="true"></span>
+
+    <!-- Photo stays exactly as-is -->
     <img src="bhuvana.jpg" alt="Bhuvaneshwari Photo" class="profile-photo">
 
     <p class="subtitle-mobile">Android Developer Intern — Kotlin</p>
