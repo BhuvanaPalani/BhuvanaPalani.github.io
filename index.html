@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Bhuvana | Developer Portfolio</title>
   <style>
+    /* ===== DESKTOP (unchanged) ===== */
     body{
       font-family: system-ui, Arial, sans-serif;
       margin: 0;
@@ -13,64 +14,32 @@
       background-size: cover;
       color: #222;
     }
-
     nav{
       text-align: center;
       background: #f4d190;
       padding: 12px;
-      position: sticky; 
-      top: 0; 
-      z-index: 100;
+      position: sticky; top: 0; z-index: 100;
       box-shadow: 0 2px 6px rgba(0,0,0,0.12);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
     }
 
-    .nav-links {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
+    /* Wrap your links without changing desktop look */
+    .nav-links { display: inline; }
 
     nav a{
-      margin: 0 10px; 
-      text-decoration: none; 
-      color: #222;
-      font-weight: 700; 
-      padding: 6px 10px; 
-      border-radius: 6px;
-      transition: background .3s, color .3s; 
-      white-space: nowrap;
+      margin: 0 10px; text-decoration: none; color: #222;
+      font-weight: 700; padding: 6px 10px; border-radius: 6px;
+      transition: background .3s, color .3s; white-space: nowrap;
     }
     nav a:hover{ background:#e0e0e0; color:#000; }
 
-    /* hamburger button (hidden on desktop) */
-    .hamburger {
-      display: none;
-      cursor: pointer;
-      padding: 8px;
-      border: 2px solid #222;
-      border-radius: 6px;
-      background: none;
-      margin-right: auto;
-    }
-    .hamburger div {
-      width: 22px;
-      height: 2px;
-      background: #222;
-      margin: 4px 0;
-    }
-
     header{
       display: flex;
-      justify-content: space-between;
+      justify-content: space-between;   /* photo stays on right */
       align-items: center;
       max-width: 1100px;
       margin: 60px auto;
       padding: 40px 16px;
-      gap: 100px;
+      gap: 100px;                        /* safe gap to phone */
     }
 
     .intro{
@@ -84,79 +53,125 @@
       line-height: 1.25;
       font-weight: 800;
     }
-    .intro p{ margin: 0; font-size: 1.1rem; font-weight: bold; }
+    .intro p{ margin: 0; font-size: 1.1rem; font-weight: bold; } /* desktop subtitle stays */
 
     .profile-photo{
-      width: 180px; 
-      height: 180px; 
-      border-radius: 50%;
-      border: 3px solid #222; 
-      object-fit: cover;
+      width: 180px; height: 180px; border-radius: 50%;
+      border: 3px solid #222; object-fit: cover;
     }
+
+    /* extra subtitle used only on mobile */
+    .subtitle-mobile{ display:none; }
+
+    /* spacers used only on mobile */
+    .spacer-top, .spacer-after-text, .spacer-before-photo{ display:none; }
 
     /* ===== MOBILE ONLY (≤700px) ===== */
     @media (max-width:700px){
-      nav {
-        justify-content: space-between;
+      :root{
+        --top-gap: 9vh;
+        --after-text-gap: 13vh;
+        --before-photo-gap: 2vh;
       }
 
+      body{ background-attachment: scroll; background-position: center top; }
+      nav a{ margin:4px 6px; font-size:.95rem; padding:6px 8px; }
+
+      /* ✅ Hamburger (shown only on mobile) */
+      .hamburger {
+        display: inline-block;
+        cursor: pointer;
+        padding: 6px 8px;
+        border: 2px solid #222;
+        border-radius: 6px;
+        margin-right: 10px;
+        vertical-align: middle;
+        background: transparent;
+      }
+      .hamburger .bar{
+        display: block; width: 22px; height: 2px; background:#222; margin: 4px 0;
+        transition: transform .25s ease, opacity .25s ease;
+      }
+
+      /* Hide links by default on mobile */
       .nav-links {
         display: none;
         width: 100%;
-        flex-direction: column;
-        text-align: center;
       }
 
-      .nav-links a {
-        margin: 8px 0;
-      }
-
-      .hamburger {
+      /* When toggled, show links as a stacked list */
+      #menu-toggle:checked + nav .nav-links{
         display: block;
+        margin-top: 8px;
       }
 
-      nav.active .nav-links {
-        display: flex;
-      }
+      /* Animate hamburger to X when open */
+      #menu-toggle:checked + nav .hamburger .bar:nth-child(1){ transform: translateY(6px) rotate(45deg); }
+      #menu-toggle:checked + nav .hamburger .bar:nth-child(2){ opacity: 0; }
+      #menu-toggle:checked + nav .hamburger .bar:nth-child(3){ transform: translateY(-6px) rotate(-45deg); }
 
       header{
         flex-direction: column;
         align-items: center;
         text-align: center;
-        max-width: 340px;
-        margin: 20px auto;
+        max-width: 340px;            /* approx phone inner width */
+        margin: 0 auto 36px;
         padding: 0;
-        gap: 20px;
+        gap: 0;
       }
 
       .intro{
-        margin: 0;
+        margin: 0 auto;
         padding: 0;
-        text-align: center;
+        max-width: 18ch;             /* force wrap of long name */
+        text-align: center;           /* center text inside phone */
       }
-
       .intro h1{
-        font-size: 1.2rem;
+        font-size: 0.98rem;
+        line-height: 1.2;
+        margin: 0 0 4px 0;
+        word-break: break-word;
+        white-space: normal;
       }
-
       .intro p{
-        font-size: 1rem;
+        display: none;                /* 🔒 hide subtitle inside phone on mobile */
       }
 
+      .spacer-top{ display:block; height: var(--top-gap); }
+      .spacer-after-text{ display:block; height: var(--after-text-gap); }
+      .spacer-before-photo{ display:block; height: var(--before-photo-gap); }
+
+      /* photo position remains as you liked it */
       .profile-photo{
-        width: 100px; 
-        height: 100px;
+        width: 90px; height: 90px; margin: 0;
+        transform: translateY(-10vh);
+      }
+
+      /* 🔽 show subtitle again *below the phone/photo* on mobile */
+      .subtitle-mobile{
+        display: block;
+        margin-top: 10px;            /* space below the phone edge */
+        font-size: 1.1rem;
+        color: #222;
+        text-align: center;
+        font-weight: bolder;
       }
     }
   </style>
 </head>
 <body>
-  <nav id="navbar">
-    <button class="hamburger" id="menuBtn" aria-label="Menu">
-      <div></div>
-      <div></div>
-      <div></div>
-    </button>
+  <!-- Hidden checkbox controls the mobile toggle -->
+  <input id="menu-toggle" type="checkbox" aria-hidden="true" style="position:absolute;left:-9999px;" />
+
+  <nav>
+    <!-- Hamburger button (mobile only) -->
+    <label for="menu-toggle" class="hamburger" aria-label="Toggle menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </label>
+
+    <!-- Your links (unchanged semantics; wrapped for mobile toggle) -->
     <div class="nav-links">
       <a href="profile.html">Profile</a>
       <a href="education.html">Education</a>
@@ -168,20 +183,22 @@
   </nav>
 
   <header>
+    <!-- mobile spacing helpers -->
+    <span class="spacer-top" aria-hidden="true"></span>
+
     <div class="intro">
       <h1>Hi 👋</h1>
       <h1>I'm Bhuvana Palaniappan</h1>
-      <p>Android Developer Intern — Kotlin</p>
+      <p>Android Developer Intern — Kotlin</p> <!-- hidden on mobile -->
+      <span class="spacer-after-text" aria-hidden="true"></span>
     </div>
-    <img src="bhuvana.jpg" alt="Bhuvaneshwari Photo" class="profile-photo">
-  </header>
 
-  <script>
-    const menuBtn = document.getElementById('menuBtn');
-    const navbar = document.getElementById('navbar');
-    menuBtn.addEventListener('click', () => {
-      navbar.classList.toggle('active');
-    });
-  </script>
+    <span class="spacer-before-photo" aria-hidden="true"></span>
+
+    <img src="bhuvana.jpg" alt="Bhuvaneshwari Photo" class="profile-photo">
+
+    <!-- visible only on mobile, placed *below* the phone/photo -->
+    <p class="subtitle-mobile">Android Developer Intern — Kotlin</p>
+  </header>
 </body>
 </html>
