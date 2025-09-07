@@ -62,18 +62,19 @@
     .subtitle-mobile{ display:none; }
     .spacer-top, .spacer-after-text, .spacer-before-photo{ display:none; }
 
+    /* ===== ANDROID ROBOT ===== */
     .android-robot {
-     display: none; /* hidden on desktop */
-     }
+      display: none; /* hidden on desktop */
+    }
 
     /* ===== MOBILE ONLY (≤700px) ===== */
     @media (max-width:700px){
-      /* === New background for mobile (light beige gradient) === */
+      /* Mobile background */
       body{
         background: linear-gradient(to bottom, #E5D8C5, #f4d190);
         background-attachment: scroll;
         background-position: center top;
-        color: #222; /* text stays dark */
+        color: #222;
       }
 
       nav{ 
@@ -81,7 +82,7 @@
         justify-content: flex-start;
         align-items: center;
         padding: 10px;
-        background: #E5D8C5; /* match beige */
+        background: #E5D8C5;
       }
 
       .hamburger {
@@ -154,14 +155,16 @@
         font-weight: bolder;
       }
 
-      /* Android robot fixed neatly bottom-right */
+      /* Robot visible only on mobile, pinned bottom-right */
       .android-robot {
+        display: block;
         position: fixed;
         bottom: 10px;
-        right: 10px;   /* controlled offset */
+        right: 10px;
         width: 60px;
         height: auto;
         opacity: 0.9;
+        z-index: 200;
       }
     }
   </style>
@@ -206,7 +209,7 @@
     <p class="subtitle-mobile">Android Developer Intern — Kotlin</p>
   </header>
 
-  <!-- Android robot (shows bottom-right on mobile) -->
-  <img src="android_robot.png" alt="Android Robot" class="android-robot">
+  <!-- Robot floats only in mobile view -->
+  <img src="android-robot.png" alt="Android Robot" class="android-robot">
 </body>
 </html>
